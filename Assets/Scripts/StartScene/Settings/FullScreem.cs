@@ -26,10 +26,8 @@ public class FullScreem : MonoBehaviour
         if(fullScreems == true){
             if(Screen.fullScreen == true){
                 toggleScreem.isOn = true;
-                Debug.Log(Screen.fullScreen + " Pantalla completa");
             }else{
                 toggleScreem.isOn = false;
-                Debug.Log(Screen.fullScreen + " Modo Pantalla");
             }
         }
     }

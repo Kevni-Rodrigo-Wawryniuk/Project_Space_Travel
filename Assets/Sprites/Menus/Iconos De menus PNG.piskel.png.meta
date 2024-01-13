@@ -1,0 +1,805 @@
+fileFormatVersion: 2
+guid: b6470c9ca2dc8ab4798bbe176b46fbee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4468712899057718358
+    second: Iconos De menus PNG.piskel_0
+  - first:
+      213: -4484703607185751180
+    second: Iconos De menus PNG.piskel_1
+  - first:
+      213: -4872089951698804777
+    second: Iconos De menus PNG.piskel_2
+  - first:
+      213: 1760344152497138363
+    second: Iconos De menus PNG.piskel_3
+  - first:
+      213: -4988434616499831890
+    second: Iconos De menus PNG.piskel_4
+  - first:
+      213: 5520591293929098760
+    second: Iconos De menus PNG.piskel_5
+  - first:
+      213: -269630734138964573
+    second: Iconos De menus PNG.piskel_6
+  - first:
+      213: -5141675857054381555
+    second: Iconos De menus PNG.piskel_7
+  - first:
+      213: -7274259988027571931
+    second: Iconos De menus PNG.piskel_8
+  - first:
+      213: 5938623171111686599
+    second: Iconos De menus PNG.piskel_9
+  - first:
+      213: 1435513812489594105
+    second: Iconos De menus PNG.piskel_10
+  - first:
+      213: 856820483027790222
+    second: Iconos De menus PNG.piskel_11
+  - first:
+      213: -2143560230860639549
+    second: Iconos De menus PNG.piskel_12
+  - first:
+      213: 4129258078808671008
+    second: Iconos De menus PNG.piskel_13
+  - first:
+      213: -1179109261922680569
+    second: Iconos De menus PNG.piskel_14
+  - first:
+      213: 9028413952363187871
+    second: Iconos De menus PNG.piskel_15
+  - first:
+      213: -3275850472801193025
+    second: Iconos De menus PNG.piskel_16
+  - first:
+      213: -3815195790896033513
+    second: Iconos De menus PNG.piskel_17
+  - first:
+      213: -68691733231207609
+    second: Iconos De menus PNG.piskel_18
+  - first:
+      213: 3863218473799954911
+    second: Iconos De menus PNG.piskel_19
+  - first:
+      213: -3873599277881449764
+    second: Iconos De menus PNG.piskel_20
+  - first:
+      213: -7386421243173089924
+    second: Iconos De menus PNG.piskel_21
+  - first:
+      213: -6740480547198499904
+    second: Iconos De menus PNG.piskel_22
+  - first:
+      213: -2190819948595877023
+    second: Iconos De menus PNG.piskel_23
+  - first:
+      213: -9060089951877156046
+    second: Iconos De menus PNG.piskel_24
+  - first:
+      213: 9118871913091961250
+    second: Iconos De menus PNG.piskel_25
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab65786b41fbf1c0800000000000000
+      internalID: -4468712899057718358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_1
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473c7ca84d123c1c0800000000000000
+      internalID: -4484703607185751180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_2
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df1e3b900cd26cb0800000000000000
+      internalID: -4872089951698804777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_3
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba27041eaffd6810800000000000000
+      internalID: 1760344152497138363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_4
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabf34a652585cab0800000000000000
+      internalID: -4988434616499831890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_5
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 3773
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e02c058841d9c40800000000000000
+      internalID: 5520591293929098760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_6
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 3773
+        width: 166
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a58e1f9644124cf0800000000000000
+      internalID: -269630734138964573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_7
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 3773
+        width: 166
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a421ebc0915a8b0800000000000000
+      internalID: -5141675857054381555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_8
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 3773
+        width: 614
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52187c1e413ac0b90800000000000000
+      internalID: -7274259988027571931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_9
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 3773
+        width: 486
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c114095f4a3a6250800000000000000
+      internalID: 5938623171111686599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_10
+      rect:
+        serializedVersion: 2
+        x: 2877
+        y: 3741
+        width: 486
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4eb9fe438fbe310800000000000000
+      internalID: 1435513812489594105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_11
+      rect:
+        serializedVersion: 2
+        x: 3421
+        y: 3773
+        width: 582
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89662f80b904eb00800000000000000
+      internalID: 856820483027790222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 3421
+        width: 230
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2b5ecb35b8042e0800000000000000
+      internalID: -2143560230860639549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_13
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 3421
+        width: 230
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0238d4d48521e4930800000000000000
+      internalID: 4129258078808671008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_14
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 3421
+        width: 134
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701c9bb9f56f2afe0800000000000000
+      internalID: -1179109261922680569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_15
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 3421
+        width: 134
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ec9c3b7ae5b4d70800000000000000
+      internalID: 9028413952363187871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_16
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 3421
+        width: 166
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb3b367e957d982d0800000000000000
+      internalID: -3275850472801193025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_17
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 3421
+        width: 166
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711931754a3bd0bc0800000000000000
+      internalID: -3815195790896033513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_18
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 3421
+        width: 582
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b7fb98b35fb0ff0800000000000000
+      internalID: -68691733231207609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_19
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 3421
+        width: 742
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1b294dbb8ec9530800000000000000
+      internalID: 3863218473799954911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_20
+      rect:
+        serializedVersion: 2
+        x: 2813
+        y: 3421
+        width: 582
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2aaafdaf53e3ac0800000000000000
+      internalID: -3873599277881449764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_21
+      rect:
+        serializedVersion: 2
+        x: 3453
+        y: 3421
+        width: 550
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7dc447a3092e7990800000000000000
+      internalID: -7386421243173089924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_22
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 3069
+        width: 230
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c38dc8a7a00572a0800000000000000
+      internalID: -6740480547198499904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_23
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 3069
+        width: 230
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b6a1d3dd4a891e0800000000000000
+      internalID: -2190819948595877023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_24
+      rect:
+        serializedVersion: 2
+        x: 3453
+        y: 3133
+        width: 614
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233b641f038144280800000000000000
+      internalID: -9060089951877156046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iconos De menus PNG.piskel_25
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 3772
+        width: 361
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1122ce0bdbc8e70800000000000000
+      internalID: 9118871913091961250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

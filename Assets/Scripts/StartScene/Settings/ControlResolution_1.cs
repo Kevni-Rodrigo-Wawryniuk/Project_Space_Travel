@@ -9,7 +9,7 @@ public class ControlResolution_1 : MonoBehaviour
 
     [Header("Resolutions")]
     public bool resolutions;
-    [SerializeField] TMP_Dropdown tMP_Dropdown;
+    [SerializeField] public TMP_Dropdown tMP_Dropdown;
     [SerializeField] int valueResolution;
     Resolution resolutionActual;
 

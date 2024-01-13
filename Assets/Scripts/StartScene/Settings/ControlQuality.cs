@@ -9,7 +9,7 @@ public class ControlQuality : MonoBehaviour
 
     [Header("Quality")]
     public bool quality;
-    [SerializeField] TMP_Dropdown tMP_DropdownQuality;
+    [SerializeField] public TMP_Dropdown tMP_DropdownQuality;
     [SerializeField] int stateQuality;
 
     // Start is called before the first frame update
