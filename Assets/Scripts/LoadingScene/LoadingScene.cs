@@ -12,7 +12,7 @@ public class LoadingScene : MonoBehaviour
     public bool load;
     [SerializeField] Slider sliderLoad;
     [SerializeField] int sceneValue;
-    [SerializeField] TextMeshProUGUI sceneValueText;
+    [SerializeField] float timePaseScene, endTimePaseScene;
 
     [Header("Pantalla De Carga")]
     public bool screemLoad;
@@ -48,7 +48,7 @@ public class LoadingScene : MonoBehaviour
         {
             for (int i = 0; i < 16; i++)
             {
-                BackGroundStars[i].material.mainTextureOffset = BackGroundStars[i].material.mainTextureOffset += new Vector2(speedMeteorX,speedMeteorY) * Time.deltaTime;
+                BackGroundStars[i].material.mainTextureOffset = BackGroundStars[i].material.mainTextureOffset += new Vector2(speedMeteorX, speedMeteorY) * Time.deltaTime;
             }
         }
     }
@@ -65,21 +65,17 @@ public class LoadingScene : MonoBehaviour
         while (!operation.isDone)
         {
             sliderLoad.value = operation.progress;
-            if (operation.progress <= 0.9f)
-            {
-                sceneValueText.text = "Loading..." + ((uint)sliderLoad.value) + "%";
-            }
+
             if (operation.progress >= 0.9f)
             {
-                sceneValueText.text = "Loading..." + "100%";
-
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                timePaseScene += 1 * Time.deltaTime;
+                if (timePaseScene > endTimePaseScene)
                 {
+                    timePaseScene = 0;
                     operation.allowSceneActivation = true;
                     Time.timeScale = 1;
                 }
             }
-
             yield return null;
         }
     }

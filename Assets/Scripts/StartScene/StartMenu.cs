@@ -24,11 +24,15 @@ public class StartMenu : MonoBehaviour
 
     [Header("Start Screem")]
     public bool startScreemAnimations;
-    [SerializeField] int objectStartScreemSeletion, objectLevelsScreemSelection, objetoLevelButtonSelection, objectSettingScreemSeletion, objectSettingKeyControlScreemSeletion, objectQuitScreemSeletion;
-    [SerializeField] GameObject[] buttonStartScreem, buttonLevelScreem, buttonSettingsScreem, buttonSettingKeyControl, buttonQuitScreem;
+    [SerializeField] int objectStartScreemSeletion, objectNaveSelection, objectLevelsScreemSelection, objetoLevelButtonSelection, objectSettingScreemSeletion, objectSettingKeyControlScreemSeletion, objectQuitScreemSeletion;
+    [SerializeField] Transform[] positionNave;
+    [SerializeField] GameObject[] buttonStartScreem, naveSelection, buttonLevelScreem, buttonSettingsScreem, buttonSettingKeyControl, buttonQuitScreem;
     [SerializeField] public GameObject[] buttonStartScreemEventSystem, buttonSettingScreemEventSystem, buttonSettingKeyControlEventSystem, buttonQuitScreemEventSystem, buttonLevelScreemEventSystem;
-    [SerializeField] GameObject[] backGroundPlanets;
-    [SerializeField] float speedPlanets;
+    [SerializeField] GameObject[] backGroundPlanets, naves;
+    [SerializeField] MeshRenderer[] stars;
+    [SerializeField] bool naveASeleccionar, moveMenus;
+    [SerializeField] float speedPlanets, speerStarsY, speedNaves;
+    [SerializeField] float timeSelectionNave, endTimeSelectionNave, timeQuitScreem;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,61 @@ public class StartMenu : MonoBehaviour
         PreAsignacionDeTeclas();
 
         startScreemAnimations = true;
+        moveMenus = true;
+
+        objectNaveSelection = PlayerPrefs.GetInt("Nave", 0);
+
+        switch (objectNaveSelection)
+        {
+            case 0:
+                naveSelection[0].transform.position = positionNave[1].position;
+                naveSelection[1].transform.position = positionNave[0].position;
+                naveSelection[2].transform.position = positionNave[0].position;
+                naveSelection[3].transform.position = positionNave[0].position;
+                naveSelection[4].transform.position = positionNave[0].position;
+                naveSelection[5].transform.position = positionNave[0].position;
+                break;
+            case 1:
+                naveSelection[0].transform.position = positionNave[2].position;
+                naveSelection[1].transform.position = positionNave[1].position;
+                naveSelection[2].transform.position = positionNave[0].position;
+                naveSelection[3].transform.position = positionNave[0].position;
+                naveSelection[4].transform.position = positionNave[0].position;
+                naveSelection[5].transform.position = positionNave[0].position;
+                break;
+            case 2:
+                naveSelection[0].transform.position = positionNave[2].position;
+                naveSelection[1].transform.position = positionNave[2].position;
+                naveSelection[2].transform.position = positionNave[1].position;
+                naveSelection[3].transform.position = positionNave[0].position;
+                naveSelection[4].transform.position = positionNave[0].position;
+                naveSelection[5].transform.position = positionNave[0].position;
+                break;
+            case 3:
+                naveSelection[0].transform.position = positionNave[2].position;
+                naveSelection[1].transform.position = positionNave[2].position;
+                naveSelection[2].transform.position = positionNave[2].position;
+                naveSelection[3].transform.position = positionNave[1].position;
+                naveSelection[4].transform.position = positionNave[0].position;
+                naveSelection[5].transform.position = positionNave[0].position;
+                break;
+            case 4:
+                naveSelection[0].transform.position = positionNave[2].position;
+                naveSelection[1].transform.position = positionNave[2].position;
+                naveSelection[2].transform.position = positionNave[2].position;
+                naveSelection[3].transform.position = positionNave[2].position;
+                naveSelection[4].transform.position = positionNave[1].position;
+                naveSelection[5].transform.position = positionNave[0].position;
+                break;
+            case 5:
+                naveSelection[0].transform.position = positionNave[2].position;
+                naveSelection[1].transform.position = positionNave[2].position;
+                naveSelection[2].transform.position = positionNave[2].position;
+                naveSelection[3].transform.position = positionNave[2].position;
+                naveSelection[4].transform.position = positionNave[2].position;
+                naveSelection[5].transform.position = positionNave[1].position;
+                break;
+        }
     }
     private void PreAsignacionDeTeclas()
     {
@@ -109,6 +168,7 @@ public class StartMenu : MonoBehaviour
 
         // mover los planetas que representan los niveles
         MovePlanets();
+        MoveStars();
     }
 
     //      CARGAR SCENA    //
@@ -116,38 +176,68 @@ public class StartMenu : MonoBehaviour
     {
         switch (objectLevelsScreemSelection)
         {
-            default:
-            PlayerPrefs.SetInt("Level",2);
-            break;
+            case 0:
+                PlayerPrefs.SetInt("Level", 2);
+                break;
             case 1:
-            PlayerPrefs.SetInt("Level",3);
-            break;
+                PlayerPrefs.SetInt("Level", 3);
+                break;
             case 2:
-            PlayerPrefs.SetInt("Level",4);
-            break;
+                PlayerPrefs.SetInt("Level", 4);
+                break;
             case 3:
-            PlayerPrefs.SetInt("Level",5);
-            break;
+                PlayerPrefs.SetInt("Level", 5);
+                break;
             case 4:
-            PlayerPrefs.SetInt("Level",6);
-            break;
+                PlayerPrefs.SetInt("Level", 6);
+                break;
         }
+    }
+    //                      //
+
+    //      NAVE A USAR     //
+    public void SeleccionarNave()
+    {
+        naveASeleccionar = !naveASeleccionar;
+    }
+    public void SumarValorDeLaNave()
+    {
+        naveASeleccionar = true;
+        objectNaveSelection++;
+        if (objectNaveSelection > 5)
+        {
+            objectNaveSelection = 5;
+        }
+        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+        naveASeleccionar = false;
+    }
+    public void RestarValorDeLaNave()
+    {
+        naveASeleccionar = true;
+        objectNaveSelection--;
+        if (objectNaveSelection < 0)
+        {
+            objectNaveSelection = 0;
+        }
+        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+        naveASeleccionar = false;
     }
     //                      //
 
     //      UTILIZANDO MENUS        //
     private void Menus()
     {
-        if (screemActive.canvasStartActive == true)
+        if (screemActive.canvasStartActive == true && naveASeleccionar == false)
         {
+            naveSelection[6].SetActive(true);
             switch (objectStartScreemSeletion)
             {
-                default:
+                case 0:
                     eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[0]);
 
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 12; i++)
                     {
-                        if (i > -1 && i < 3)
+                        if (i > -1 && i < 4)
                         {
                             buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", false);
                             if (i == 0)
@@ -155,10 +245,10 @@ public class StartMenu : MonoBehaviour
                                 buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", true);
                             }
                         }
-                        if (i > 2)
+                        if (i > 3)
                         {
                             buttonStartScreem[i].SetActive(false);
-                            if (i == 3 || i == 4)
+                            if (i == 4 || i == 5)
                             {
                                 buttonStartScreem[i].SetActive(true);
                             }
@@ -173,9 +263,9 @@ public class StartMenu : MonoBehaviour
                 case 1:
                     eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[1]);
 
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 12; i++)
                     {
-                        if (i > -1 && i < 3)
+                        if (i > -1 && i < 4)
                         {
                             buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", false);
                             if (i == 1)
@@ -183,10 +273,10 @@ public class StartMenu : MonoBehaviour
                                 buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", true);
                             }
                         }
-                        if (i > 2)
+                        if (i > 3)
                         {
                             buttonStartScreem[i].SetActive(false);
-                            if (i == 5 || i == 6)
+                            if (i == 6 || i == 7)
                             {
                                 buttonStartScreem[i].SetActive(true);
                             }
@@ -201,9 +291,9 @@ public class StartMenu : MonoBehaviour
                 case 2:
                     eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[2]);
 
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 12; i++)
                     {
-                        if (i > -1 && i < 3)
+                        if (i > -1 && i < 4)
                         {
                             buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", false);
                             if (i == 2)
@@ -211,27 +301,191 @@ public class StartMenu : MonoBehaviour
                                 buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", true);
                             }
                         }
-                        if (i > 2)
+                        if (i > 3)
                         {
                             buttonStartScreem[i].SetActive(false);
-                            if (i == 7 || i == 8)
+                            if (i == 8 || i == 9)
                             {
                                 buttonStartScreem[i].SetActive(true);
                             }
                         }
                     }
-                    if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                    if (timeQuitScreem < endTimeSelectionNave)
                     {
-                        screemActive.BotonQuit();
+                        timeQuitScreem += 1 * Time.deltaTime;
                     }
+                    if (timeQuitScreem > endTimeSelectionNave)
+                    {
+                        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                        {
+                            timeQuitScreem = 0;
+                            screemActive.BotonQuit();
+                        }
+                    }
+                    break;
+                case 3:
+                    eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[3]);
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (i > -1 && i < 4)
+                        {
+                            buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", false);
+                            if (i == 3)
+                            {
+                                buttonStartScreem[i].GetComponent<Animator>().SetBool("Seleccionado", true);
+                            }
+                        }
+                        if (i > 3)
+                        {
+                            buttonStartScreem[i].SetActive(false);
+                            if (i == 10 || i == 11)
+                            {
+                                buttonStartScreem[i].SetActive(true);
+                            }
+                        }
+                    }
+                    if (timeSelectionNave < endTimeSelectionNave)
+                    {
+                        timeSelectionNave += 1 * Time.deltaTime;
+                    }
+                    if (timeSelectionNave >= endTimeSelectionNave)
+                    {
+                        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                        {
+                            SeleccionarNave();
+                            timeSelectionNave = 0;
+                        }
+                    }
+
+                    break;
+            }
+            switch (objectNaveSelection)
+            {
+                case 0:
+                    naveSelection[0].transform.position = positionNave[1].position;
+                    naveSelection[1].transform.position = positionNave[0].position;
+                    naveSelection[2].transform.position = positionNave[0].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 1:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[1].position;
+                    naveSelection[2].transform.position = positionNave[0].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 2:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[1].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 3:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[1].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 4:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[2].position;
+                    naveSelection[4].transform.position = positionNave[1].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 5:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[2].position;
+                    naveSelection[4].transform.position = positionNave[2].position;
+                    naveSelection[5].transform.position = positionNave[1].position;
+                    break;
+            }
+        }
+        if (screemActive.canvasStartActive == true && naveASeleccionar == true)
+        {
+            naveSelection[6].SetActive(true);
+            if (timeSelectionNave < endTimeSelectionNave)
+            {
+                timeSelectionNave += 1 * Time.deltaTime;
+            }
+            if (timeSelectionNave >= endTimeSelectionNave)
+            {
+                if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    SeleccionarNave();
+                    timeSelectionNave = 0;
+                }
+            }
+
+            eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[3]);
+            switch (objectNaveSelection)
+            {
+                case 0:
+                    naveSelection[0].transform.position = positionNave[1].position;
+                    naveSelection[1].transform.position = positionNave[0].position;
+                    naveSelection[2].transform.position = positionNave[0].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 1:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[1].position;
+                    naveSelection[2].transform.position = positionNave[0].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 2:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[1].position;
+                    naveSelection[3].transform.position = positionNave[0].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 3:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[1].position;
+                    naveSelection[4].transform.position = positionNave[0].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 4:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[2].position;
+                    naveSelection[4].transform.position = positionNave[1].position;
+                    naveSelection[5].transform.position = positionNave[0].position;
+                    break;
+                case 5:
+                    naveSelection[0].transform.position = positionNave[2].position;
+                    naveSelection[1].transform.position = positionNave[2].position;
+                    naveSelection[2].transform.position = positionNave[2].position;
+                    naveSelection[3].transform.position = positionNave[2].position;
+                    naveSelection[4].transform.position = positionNave[2].position;
+                    naveSelection[5].transform.position = positionNave[1].position;
                     break;
             }
         }
         if (screemActive.canvasLevelsActive == true)
         {
+            naveSelection[6].SetActive(false);
             switch (objectLevelsScreemSelection)
             {
-                default:
+                case 0:
                     backGroundPlanets[0].transform.position = new Vector3(0, 0, 0);
                     backGroundPlanets[1].transform.position = new Vector3(20, 0, 0);
                     backGroundPlanets[2].transform.position = new Vector3(40, 0, 0);
@@ -317,9 +571,10 @@ public class StartMenu : MonoBehaviour
         }
         if (screemActive.canvasSettingsActive == true)
         {
+            naveSelection[6].SetActive(false);
             switch (objectSettingScreemSeletion)
             {
-                default:
+                case 0:
                     eventSystem.SetSelectedGameObject(buttonSettingScreemEventSystem[0]);
 
                     for (int i = 0; i < 21; i++)
@@ -521,9 +776,10 @@ public class StartMenu : MonoBehaviour
         }
         if (screemActive.canvasSettingsKeyControlActive == true)
         {
+            naveSelection[6].SetActive(false);
             switch (objectSettingKeyControlScreemSeletion)
             {
-                default:
+                case 0:
                     eventSystem.SetSelectedGameObject(buttonSettingKeyControlEventSystem[0]);
 
                     for (int i = 0; i < 21; i++)
@@ -692,9 +948,10 @@ public class StartMenu : MonoBehaviour
         }
         if (screemActive.canvasQuitActive == true)
         {
+            naveSelection[6].SetActive(false);
             switch (objectQuitScreemSeletion)
             {
-                default:
+                case 0:
                     eventSystem.SetSelectedGameObject(buttonQuitScreemEventSystem[0]);
 
                     for (int i = 0; i < 6; i++)
@@ -718,6 +975,7 @@ public class StartMenu : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
+                        screemActive.BotonQuitYes();
                     }
                     break;
                 case 1:
@@ -742,9 +1000,17 @@ public class StartMenu : MonoBehaviour
                             }
                         }
                     }
-
-                    if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                    if (timeQuitScreem < endTimeSelectionNave)
                     {
+                        timeQuitScreem += 1 * Time.deltaTime;
+                    }
+                    if (timeQuitScreem > endTimeSelectionNave)
+                    {
+                        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                        {
+                            timeQuitScreem = 0;
+                            screemActive.BotonQuit();
+                        }
                     }
                     break;
             }
@@ -754,128 +1020,219 @@ public class StartMenu : MonoBehaviour
     //   ESTO ES SOLO PARA LOS CONTROLES DE POSICION DE LOS MENUS   //
     private void MoveMenus()
     {
-        if (screemActive.canvasStartActive == true)
+        if (moveMenus == true)
         {
-            if (objectStartScreemSeletion < 0)
+            if (screemActive.canvasStartActive == true)
             {
-                objectStartScreemSeletion = 2;
-            }
-            if (objectStartScreemSeletion > 2)
-            {
-                objectStartScreemSeletion = 0;
-            }
-
-            if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                objectStartScreemSeletion--;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                objectStartScreemSeletion++;
-            }
-        }
-        if (screemActive.canvasLevelsActive == true)
-        {
-            if (objetoLevelButtonSelection == 0)
-            {
-                if (objectLevelsScreemSelection < 0)
+                if (naveASeleccionar == false)
                 {
-                    objectLevelsScreemSelection = 4;
+                    if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        objectStartScreemSeletion--;
+                        if (objectStartScreemSeletion < 0)
+                        {
+                            objectStartScreemSeletion = 2;
+                        }
+                        if (objectStartScreemSeletion > 2)
+                        {
+                            objectStartScreemSeletion = 0;
+                        }
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        objectStartScreemSeletion++;
+                        if (objectStartScreemSeletion < 0)
+                        {
+                            objectStartScreemSeletion = 2;
+                        }
+                        if (objectStartScreemSeletion > 2)
+                        {
+                            objectStartScreemSeletion = 0;
+                        }
+
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        if (objectStartScreemSeletion == 3)
+                        {
+                            objectStartScreemSeletion = 0;
+                        }
+                        else if (objectStartScreemSeletion < 3)
+                        {
+                            objectStartScreemSeletion = 3;
+                        }
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        if (objectStartScreemSeletion < 3)
+                        {
+                            objectStartScreemSeletion = 3;
+                        }
+                        else if (objectStartScreemSeletion == 3)
+                        {
+                            objectStartScreemSeletion = 0;
+                        }
+                    }
                 }
-                if (objectLevelsScreemSelection > 4)
+                else if (naveASeleccionar == true)
                 {
-                    objectLevelsScreemSelection = 0;
+                    if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        objectNaveSelection--;
+                        if (objectNaveSelection < 0)
+                        {
+                            objectNaveSelection = 0;
+                        }
+
+                        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        objectNaveSelection++;
+                        if (objectNaveSelection > 5)
+                        {
+                            objectNaveSelection = 5;
+                        }
+
+                        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        objectNaveSelection++;
+                        if (objectNaveSelection > 5)
+                        {
+                            objectNaveSelection = 5;
+                        }
+
+                        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        objectNaveSelection--;
+                        if (objectNaveSelection < 0)
+                        {
+                            objectNaveSelection = 0;
+                        }
+
+                        PlayerPrefs.SetInt("Nave", objectNaveSelection);
+                    }
                 }
-                if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
+
+            }
+            if (screemActive.canvasLevelsActive == true)
+            {
+                if (objetoLevelButtonSelection == 0)
                 {
-                    objectLevelsScreemSelection++;
+                    if (objectLevelsScreemSelection < 0)
+                    {
+                        objectLevelsScreemSelection = 4;
+                    }
+                    if (objectLevelsScreemSelection > 4)
+                    {
+                        objectLevelsScreemSelection = 0;
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        objectLevelsScreemSelection++;
+                    }
+                    if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        objectLevelsScreemSelection--;
+                    }
                 }
-                if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
+
+                if (objetoLevelButtonSelection < 0)
                 {
-                    objectLevelsScreemSelection--;
+                    objetoLevelButtonSelection = 1;
+                }
+                if (objetoLevelButtonSelection > 1)
+                {
+                    objetoLevelButtonSelection = 0;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    objetoLevelButtonSelection++;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    objetoLevelButtonSelection--;
+                }
+
+            }
+            if (screemActive.canvasSettingsActive == true)
+            {
+                if (objectSettingScreemSeletion < 0)
+                {
+                    objectSettingScreemSeletion = 6;
+                }
+                if (objectSettingScreemSeletion > 6)
+                {
+                    objectSettingScreemSeletion = 0;
+                }
+
+                if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    objectSettingScreemSeletion--;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    objectSettingScreemSeletion++;
                 }
             }
+            if (screemActive.canvasSettingsKeyControlActive == true)
+            {
+                if (objectSettingKeyControlScreemSeletion < 0)
+                {
+                    objectSettingKeyControlScreemSeletion = 6;
+                }
+                if (objectSettingKeyControlScreemSeletion > 6)
+                {
+                    objectSettingKeyControlScreemSeletion = 0;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    objectSettingKeyControlScreemSeletion--;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    objectSettingKeyControlScreemSeletion++;
+                }
+            }
+            if (screemActive.canvasQuitActive == true)
+            {
+                if (objectQuitScreemSeletion < 0)
+                {
+                    objectQuitScreemSeletion = 1;
+                }
+                if (objectQuitScreemSeletion > 1)
+                {
+                    objectQuitScreemSeletion = 0;
+                }
 
-            if (objetoLevelButtonSelection < 0)
-            {
-                objetoLevelButtonSelection = 1;
-            }
-            if (objetoLevelButtonSelection > 1)
-            {
-                objetoLevelButtonSelection = 0;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                objetoLevelButtonSelection++;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                objetoLevelButtonSelection--;
-            }
-
-        }
-        if (screemActive.canvasSettingsActive == true)
-        {
-            if (objectSettingScreemSeletion < 0)
-            {
-                objectSettingScreemSeletion = 6;
-            }
-            if (objectSettingScreemSeletion > 6)
-            {
-                objectSettingScreemSeletion = 0;
-            }
-
-            if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                objectSettingScreemSeletion--;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                objectSettingScreemSeletion++;
-            }
-        }
-        if (screemActive.canvasSettingsKeyControlActive == true)
-        {
-            if (objectSettingKeyControlScreemSeletion < 0)
-            {
-                objectSettingKeyControlScreemSeletion = 6;
-            }
-            if (objectSettingKeyControlScreemSeletion > 6)
-            {
-                objectSettingKeyControlScreemSeletion = 0;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                objectSettingKeyControlScreemSeletion--;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                objectSettingKeyControlScreemSeletion++;
-            }
-        }
-        if (screemActive.canvasQuitActive == true)
-        {
-            if (objectQuitScreemSeletion < 0)
-            {
-                objectQuitScreemSeletion = 1;
-            }
-            if (objectQuitScreemSeletion > 1)
-            {
-                objectQuitScreemSeletion = 0;
-            }
-
-            if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                objectQuitScreemSeletion++;
-            }
-            if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                objectQuitScreemSeletion--;
+                if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    objectQuitScreemSeletion++;
+                }
+                if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    objectQuitScreemSeletion--;
+                }
             }
         }
     }
     //                                                              //
 
+    //     MOVER ESCENARIO           //
+    private void MoveStars()
+    {
+        if (startScreemAnimations == true)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                stars[i].material.mainTextureOffset = stars[i].material.mainTextureOffset += new Vector2(0, speerStarsY) * Time.deltaTime;
+            }
+        }
+    }
     private void MovePlanets()
     {
         if (startScreemAnimations == true)
