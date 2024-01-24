@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: 9e967d41ae5bcee4cbab5453aa5ab0d9
+guid: 1025cc3f54c93bc4f938146ce3f85769
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5388324903367616308
-    second: Nave de pantalla de carga_0
+      213: -8815295713233774587
+    second: UI Para cuando se esta Jugando_0
   - first:
-      213: 6959755177919526502
-    second: Nave de pantalla de carga_1
+      213: -1837108709762423104
+    second: UI Para cuando se esta Jugando_1
   - first:
-      213: -4730223862068091676
-    second: Nave de pantalla de carga_2
+      213: 8958576503319616454
+    second: UI Para cuando se esta Jugando_2
   - first:
-      213: -2474692186678527406
-    second: Nave de pantalla de carga_3
+      213: 6649883723340820939
+    second: UI Para cuando se esta Jugando_3
   - first:
-      213: -3972248321336874378
-    second: Nave de pantalla de carga_4
-  - first:
-      213: -5308836136373554679
-    second: Nave de pantalla de carga_5
-  - first:
-      213: -7604349867875363489
-    second: Nave de pantalla de carga_6
-  - first:
-      213: -2027189627835680307
-    second: Nave de pantalla de carga_7
-  - first:
-      213: -7890446761620242865
-    second: Nave de pantalla de carga_8
+      213: -4375252981723454975
+    second: UI Para cuando se esta Jugando_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -191,12 +179,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nave de pantalla de carga_0
+      name: UI Para cuando se esta Jugando_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 3486
-        width: 804
+        x: 126
+        y: 3870
+        width: 324
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5085da61147c9a580800000000000000
+      internalID: -8815295713233774587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Para cuando se esta Jugando_1
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 3454
+        width: 420
         height: 580
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -205,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc8d1688c03d835b0800000000000000
-      internalID: -5388324903367616308
+      spriteID: 0c6a5d4ac574186e0800000000000000
+      internalID: -1837108709762423104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nave de pantalla de carga_1
+      name: UI Para cuando se esta Jugando_2
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 3486
-        width: 804
-        height: 580
+        x: 1822
+        y: 3518
+        width: 516
+        height: 516
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 666349fb574069060800000000000000
-      internalID: 6959755177919526502
+      spriteID: 6cbd68d7dd1435c70800000000000000
+      internalID: 8958576503319616454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nave de pantalla de carga_2
+      name: UI Para cuando se esta Jugando_3
       rect:
         serializedVersion: 2
-        x: 1982
-        y: 3486
-        width: 804
-        height: 580
+        x: 2398
+        y: 3550
+        width: 452
+        height: 452
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e4ea51957eda5eb0800000000000000
-      internalID: -4730223862068091676
+      spriteID: bc1b1678302294c50800000000000000
+      internalID: 6649883723340820939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nave de pantalla de carga_3
+      name: UI Para cuando se esta Jugando_4
       rect:
         serializedVersion: 2
-        x: 2910
-        y: 3486
-        width: 804
-        height: 580
+        x: 158
+        y: 3742
+        width: 260
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,113 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25a7794519028add0800000000000000
-      internalID: -2474692186678527406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nave de pantalla de carga_4
-      rect:
-        serializedVersion: 2
-        x: 926
-        y: 3070
-        width: 196
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67ae217923dbfd8c0800000000000000
-      internalID: -3972248321336874378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nave de pantalla de carga_5
-      rect:
-        serializedVersion: 2
-        x: 1278
-        y: 3038
-        width: 68
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90272b059a93356b0800000000000000
-      internalID: -5308836136373554679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nave de pantalla de carga_6
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 1982
-        width: 580
-        height: 484
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f551081b51ce77690800000000000000
-      internalID: -7604349867875363489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nave de pantalla de carga_7
-      rect:
-        serializedVersion: 2
-        x: 990
-        y: 1982
-        width: 580
-        height: 484
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc97f7426c9fdd3e0800000000000000
-      internalID: -2027189627835680307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nave de pantalla de carga_8
-      rect:
-        serializedVersion: 2
-        x: 1630
-        y: 1982
-        width: 580
-        height: 484
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4e7e76c9708f7290800000000000000
-      internalID: -7890446761620242865
+      spriteID: 102a7ed189af743c0800000000000000
+      internalID: -4375252981723454975
       vertices: []
       indices: 
       edges: []

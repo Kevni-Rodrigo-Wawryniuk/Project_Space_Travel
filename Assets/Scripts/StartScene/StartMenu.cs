@@ -224,6 +224,23 @@ public class StartMenu : MonoBehaviour
     }
     //                      //
 
+    //      NIVELES         //
+    public void SumarValorDeNivel()
+    {
+        objectLevelsScreemSelection++;
+        if(objectLevelsScreemSelection > 4){
+            objectLevelsScreemSelection = 4;
+        }
+    }
+    public void RestarValorDeNivel()
+    {
+        objectLevelsScreemSelection--;
+        if(objectLevelsScreemSelection < 0){
+            objectLevelsScreemSelection = 0;
+        }
+    }
+    //                      //
+
     //      UTILIZANDO MENUS        //
     private void Menus()
     {
