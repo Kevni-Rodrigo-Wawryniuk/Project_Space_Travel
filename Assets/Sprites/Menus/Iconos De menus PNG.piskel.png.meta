@@ -98,10 +98,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,6 +142,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -152,6 +155,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -164,6 +168,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -176,6 +181,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -188,6 +194,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -200,6 +207,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -212,6 +220,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -224,6 +233,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -236,6 +246,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -797,9 +821,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Iconos De menus PNG.piskel_0: -4468712899057718358
+      Iconos De menus PNG.piskel_1: -4484703607185751180
+      Iconos De menus PNG.piskel_10: 1435513812489594105
+      Iconos De menus PNG.piskel_11: 856820483027790222
+      Iconos De menus PNG.piskel_12: -2143560230860639549
+      Iconos De menus PNG.piskel_13: 4129258078808671008
+      Iconos De menus PNG.piskel_14: -1179109261922680569
+      Iconos De menus PNG.piskel_15: 9028413952363187871
+      Iconos De menus PNG.piskel_16: -3275850472801193025
+      Iconos De menus PNG.piskel_17: -3815195790896033513
+      Iconos De menus PNG.piskel_18: -68691733231207609
+      Iconos De menus PNG.piskel_19: 3863218473799954911
+      Iconos De menus PNG.piskel_2: -4872089951698804777
+      Iconos De menus PNG.piskel_20: -3873599277881449764
+      Iconos De menus PNG.piskel_21: -7386421243173089924
+      Iconos De menus PNG.piskel_22: -6740480547198499904
+      Iconos De menus PNG.piskel_23: -2190819948595877023
+      Iconos De menus PNG.piskel_24: -9060089951877156046
+      Iconos De menus PNG.piskel_25: 9118871913091961250
+      Iconos De menus PNG.piskel_3: 1760344152497138363
+      Iconos De menus PNG.piskel_4: -4988434616499831890
+      Iconos De menus PNG.piskel_5: 5520591293929098760
+      Iconos De menus PNG.piskel_6: -269630734138964573
+      Iconos De menus PNG.piskel_7: -5141675857054381555
+      Iconos De menus PNG.piskel_8: -7274259988027571931
+      Iconos De menus PNG.piskel_9: 5938623171111686599
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

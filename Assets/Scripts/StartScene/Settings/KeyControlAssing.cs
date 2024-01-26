@@ -14,8 +14,9 @@ public class KeyControlAssing : MonoBehaviour
     public bool controlKey;
     [SerializeField] TextMeshProUGUI textTeclaW, textTeclaS, textTeclaD, textTeclaA, textTeclaShot, textTeclaHability;
     [SerializeField] bool keyUp, keyDown, keyRight, keyLeft, keyShot, keyHability;
-    [SerializeField] public KeyCode teclaW, teclaS, teclaD, teclaA, flechaArriba, flechaAbajo, flechaDerecha, flechaIzquierda, teclaShot, teclaHability;
+    public KeyCode teclaW, teclaS, teclaD, teclaA, flechaArriba, flechaAbajo, flechaDerecha, flechaIzquierda, teclaShot, teclaHability;
     [SerializeField] float timeChange, endTimeChange;
+    [SerializeField] int startKeys;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,29 @@ public class KeyControlAssing : MonoBehaviour
         flechaDerecha = KeyCode.RightArrow;
         flechaIzquierda = KeyCode.LeftArrow;
 
-        teclaW = (KeyCode)PlayerPrefs.GetInt("teclaArriba");
-        teclaS = (KeyCode)PlayerPrefs.GetInt("teclaAbajo");
-        teclaD = (KeyCode)PlayerPrefs.GetInt("teclaDerecha");
-        teclaA = (KeyCode)PlayerPrefs.GetInt("teclaIzquieda");
-        teclaShot = (KeyCode)PlayerPrefs.GetInt("teclaShot");
-        teclaHability = (KeyCode)PlayerPrefs.GetInt("teclaHabilidad");
+        startKeys = PlayerPrefs.GetInt("teclasIniciales");
+
+        if (startKeys == 0) 
+        {
+            PlayerPrefs.SetInt("teclaArriba", (int)KeyCode.W);
+            PlayerPrefs.SetInt("teclaAbajo", (int)KeyCode.S);
+            PlayerPrefs.SetInt("teclaDerecha", (int)KeyCode.D);
+            PlayerPrefs.SetInt("teclaIzquieda", (int)KeyCode.A);
+            PlayerPrefs.SetInt("teclaShot", (int)KeyCode.J);
+            PlayerPrefs.SetInt("teclaHabilidad", (int)KeyCode.E);
+
+            PlayerPrefs.SetInt("teclasIniciales", 1);
+        }
+
+        if (startKeys == 1)
+        {
+            teclaW = (KeyCode)PlayerPrefs.GetInt("teclaArriba");
+            teclaS = (KeyCode)PlayerPrefs.GetInt("teclaAbajo");
+            teclaD = (KeyCode)PlayerPrefs.GetInt("teclaDerecha");
+            teclaA = (KeyCode)PlayerPrefs.GetInt("teclaIzquieda");
+            teclaShot = (KeyCode)PlayerPrefs.GetInt("teclaShot");
+            teclaHability = (KeyCode)PlayerPrefs.GetInt("teclaHabilidad");
+        }
     }
 
     // Update is called once per frame

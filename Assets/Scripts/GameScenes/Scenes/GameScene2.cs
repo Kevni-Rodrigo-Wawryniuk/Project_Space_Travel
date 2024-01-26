@@ -42,20 +42,46 @@ public class GameScene2 : MonoBehaviour
             case 5:
                 break;
         }
+
+        canvasPause = false;
+        canavasPlay = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         PowerUps();
+        CanvasControl();
     }
+
+    //  CONTROL DE LOS CANVAS   //
     private void CanvasControl()
     {
         if (canvasControl == true)
         {
+            canvas[0].enabled = canavasPlay;
+            canvas[1].enabled = canvasPause;
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Pause();
+            }
         }
     }
+    private void Pause()
+    {
+        if (canvasPause == true)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+        canvasPause = !canvasPause;
+
+    }
+    //                      //
 
     //   PRUEBA DE HABILIDADES   //
     private void PowerUps()

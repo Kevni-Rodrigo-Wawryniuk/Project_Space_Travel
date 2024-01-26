@@ -13,7 +13,7 @@ public class PowerUps : MonoBehaviour
 
     [Header("Determinar Habilidad")]
     public bool hability;
-    [SerializeField] int selection;
+    public int selection;
     [SerializeField] GameObject powerUp;
 
     // Start is called before the first frame update
@@ -33,6 +33,14 @@ public class PowerUps : MonoBehaviour
     {
         Limits();
         SelectionPowerUp();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     //      LIMITES      //
@@ -90,6 +98,15 @@ public class PowerUps : MonoBehaviour
                 case 11:
                     spriteRenderer.sprite = sprite[11];
                     break;
+                case 12:
+                    spriteRenderer.sprite = sprite[12];
+                break;
+                case 13:
+                    spriteRenderer.sprite = sprite[13];
+                break;
+                case 14:
+                    spriteRenderer.sprite = sprite[14];
+                break;
             }
         }
     }
