@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7696659486138091544}
   - component: {fileID: 7696659486138091545}
   - component: {fileID: 7696659486138091546}
+  - component: {fileID: 7471067739166815841}
   m_Layer: 0
   m_Name: 'Blue sphere '
   m_TagString: Untagged
@@ -192,3 +193,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.2
+--- !u!114 &7471067739166815841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696659486138091547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781ed933cc5eae2479364d004b597af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBullet: 0
+  bulletStatus: 0

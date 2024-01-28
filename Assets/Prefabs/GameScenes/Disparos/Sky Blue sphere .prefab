@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6119446031716444821}
   - component: {fileID: 6119446031716444820}
   - component: {fileID: 6119446031716444823}
+  - component: {fileID: 4076713487944238593}
   m_Layer: 0
   m_Name: 'Sky Blue sphere '
   m_TagString: Untagged
@@ -192,3 +193,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.2
+--- !u!114 &4076713487944238593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119446031716444822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781ed933cc5eae2479364d004b597af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBullet: 0
+  bulletStatus: 0

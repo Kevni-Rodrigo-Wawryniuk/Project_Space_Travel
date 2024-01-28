@@ -44,7 +44,6 @@ public class ControlHabilityActive : MonoBehaviour
             {
                 if (useHability == true)
                 {
-                    endTimeHability = 5;
                     if (timeHability < endTimeHability)
                     {
                         timeHability += 1 * Time.deltaTime;
@@ -64,14 +63,16 @@ public class ControlHabilityActive : MonoBehaviour
             switch (habilityValue)
             {
                 case 0:
-                    for (int i = 0; i <= 12; i++)
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
                         activeHability = false;
                     }
                     break;
-                case 1:
-                    for (int i = 0; i <= 12; i++)
+                // rafaga roja
+                case 3:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -81,8 +82,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 2:
-                    for (int i = 0; i <= 12; i++)
+                // rafaga celeste
+                case 4:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -92,8 +95,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 3:
-                    for (int i = 0; i <= 12; i++)
+                // rafage azul
+                case 5:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -103,8 +108,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 4:
-                    for (int i = 0; i <= 12; i++)
+                // defensa verde
+                case 6:
+                    endTimeHability = 1;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -114,8 +121,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 5:
-                    for (int i = 0; i <= 12; i++)
+                // defensa roja
+                case 7:
+                    endTimeHability = 10;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -125,8 +134,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 6:
-                    for (int i = 0; i <= 12; i++)
+                // defensa azul
+                case 8:
+                    endTimeHability = 10;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -136,8 +147,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 7:
-                    for (int i = 0; i <= 12; i++)
+                // Esfera celeste
+                case 9:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -147,8 +160,10 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 8:
-                    for (int i = 0; i <= 12; i++)
+                // Esfera azul
+                case 10:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
@@ -158,45 +173,14 @@ public class ControlHabilityActive : MonoBehaviour
                         }
                     }
                     break;
-                case 9:
-                    for (int i = 0; i <= 12; i++)
+                // Esfera roja
+                case 11:
+                    endTimeHability = 5;
+                    for (int i = 0; i <= 9; i++)
                     {
                         imageHabilitys[i].enabled = false;
 
                         if (i == 9)
-                        {
-                            imageHabilitys[i].enabled = true;
-                        }
-                    }
-                    break;
-                case 10:
-                    for (int i = 0; i <= 12; i++)
-                    {
-                        imageHabilitys[i].enabled = false;
-
-                        if (i == 10)
-                        {
-                            imageHabilitys[i].enabled = true;
-                        }
-                    }
-                    break;
-                case 11:
-                    for (int i = 0; i <= 12; i++)
-                    {
-                        imageHabilitys[i].enabled = false;
-
-                        if (i == 11)
-                        {
-                            imageHabilitys[i].enabled = true;
-                        }
-                    }
-                    break;
-                case 12:
-                    for (int i = 0; i <= 12; i++)
-                    {
-                        imageHabilitys[i].enabled = false;
-
-                        if (i == 12)
                         {
                             imageHabilitys[i].enabled = true;
                         }

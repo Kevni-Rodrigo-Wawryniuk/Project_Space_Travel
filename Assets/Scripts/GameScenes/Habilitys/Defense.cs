@@ -59,6 +59,7 @@ public class Defense : MonoBehaviour
                     break;
                 // defensa Roja
                 case 2:
+                    endTimeActive = 10;
                     if (timeActive < endTimeActive)
                     {
                         timeActive += 1 * Time.deltaTime;
@@ -73,6 +74,7 @@ public class Defense : MonoBehaviour
                     break;
                     // defensa azul
                     case 3:
+                    endTimeActive = 10;
                     if (timeActive < endTimeActive)
                     {
                         timeActive += 1 * Time.deltaTime;

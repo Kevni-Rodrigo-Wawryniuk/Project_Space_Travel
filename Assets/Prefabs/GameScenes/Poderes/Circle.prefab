@@ -377,20 +377,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8184061893795756322}
   sprite:
-  - {fileID: 6657919183606303230, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: 1788091939107948113, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: 5264626953908892562, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: -2795080400773586130, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: -4020252021876533211, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: 458993800178211549, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: -2281812784157740105, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: -8617470206600399861, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: 6687869335546758870, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: -7242500311907972032, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: 7275517324979889784, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: 6657919183606303230, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: 458993800178211549, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: -7332707622132320862, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: 5959897923061730723, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   - {fileID: -8352369390109948492, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: -8947122989421443387, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: 6252021561638883797, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
-  - {fileID: -3466291214688181849, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
+  - {fileID: -7242500311907972032, guid: fc324195d3a19dc4e951594c47da0bd4, type: 3}
   hability: 1
   selection: 0
   powerUp: {fileID: 8184061893795756332}

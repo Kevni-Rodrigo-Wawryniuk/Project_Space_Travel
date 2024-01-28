@@ -12,7 +12,7 @@ using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.UIElements;
-using Image = UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 public class Nave0 : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class Nave0 : MonoBehaviour
 
     [Header("Vidas")]
     public bool lifes;
-    [SerializeField] GameObject[] lifeImage;
+    [SerializeField] Image[] lifeImage;
     [SerializeField] int lifePoint;
 
     [Header("Habilidades")]
@@ -40,7 +40,7 @@ public class Nave0 : MonoBehaviour
     [SerializeField] int shotsSkills;
     public Transform[] positionsShots;
     [SerializeField] GameObject[] lazers;
-    [SerializeField] float forceShotx, forceShoty, timeShot, endTimeShot, timeShotActive, endTimeShotActive;
+    public float forceShotx, forceShoty, timeShot, endTimeShot, timeShotActive, endTimeShotActive;
 
     [Header("Movimiento")]
     public bool movimiento;
@@ -57,6 +57,31 @@ public class Nave0 : MonoBehaviour
         ani = GetComponent<Animator>();
         keyControlAssingPlay = GameObject.Find("Scripts").GetComponent<KeyControlAssingPlay>();
         controlHabilityActive = GameObject.Find("Scripts").GetComponent<ControlHabilityActive>();
+
+        // activar todas las funciones
+        lifes = true;
+        hability = true;
+        disparos = true;
+        movimiento = true;
+        // valores de las habilidades
+        lifePoint = 3;
+        forceShotx = 20;
+        forceShoty = 30;
+        speedX = 10;
+        speedY = 10;
+        // vidas
+        lifeImage = new Image[3];
+        lifeImage[0] = GameObject.FindGameObjectWithTag("L0").GetComponent<Image>();
+        lifeImage[1] = GameObject.FindGameObjectWithTag("L1").GetComponent<Image>();
+        lifeImage[2] = GameObject.FindGameObjectWithTag("L2").GetComponent<Image>();
+        // posicion de disparos
+        positionsShots = new Transform[6];
+        positionsShots[0] = GameObject.Find("PositionShotNormal").transform;
+        positionsShots[1] = GameObject.Find("PositionShotLazer0").transform;
+        positionsShots[2] = GameObject.Find("PositionShotLazer1").transform;
+        positionsShots[3] = GameObject.Find("PositionShotLazer2").transform;
+        positionsShots[4] = GameObject.Find("PositionShotLazer3").transform;
+        positionsShots[5] = GameObject.Find("PositionDefenses").transform;
     }
     void FixedUpdate()
     {
@@ -80,7 +105,14 @@ public class Nave0 : MonoBehaviour
 
             if (controlHabilityActive.activeHability == false)
             {
-                habilityActive = powerUps.selection;
+                if (powerUps.selection < 3)
+                {
+                    shotsSkills = powerUps.selection;
+                }
+                if (powerUps.selection > 2)
+                {
+                    habilityActive = powerUps.selection;
+                }
                 controlHabilityActive.activeHability = true;
                 controlHabilityActive.habilityValue = habilityActive;
             }
@@ -137,33 +169,33 @@ public class Nave0 : MonoBehaviour
                 case 0:
                     for (int i = 0; i < 3; i++)
                     {
-                        lifeImage[i].SetActive(false);
+                        lifeImage[i].enabled = false;
                     }
                     break;
                 case 1:
                     for (int i = 0; i < 3; i++)
                     {
-                        lifeImage[i].SetActive(false);
+                        lifeImage[i].enabled = false;
                         if (i == 2)
                         {
-                            lifeImage[i].SetActive(true);
+                            lifeImage[i].enabled = true;
                         }
                     }
                     break;
                 case 2:
                     for (int i = 0; i < 3; i++)
                     {
-                        lifeImage[i].SetActive(false);
+                        lifeImage[i].enabled = false;
                         if (i == 1 || i == 2)
                         {
-                            lifeImage[i].SetActive(true);
+                            lifeImage[i].enabled = true;
                         }
                     }
                     break;
                 case 3:
                     for (int i = 0; i < 3; i++)
                     {
-                        lifeImage[i].SetActive(true);
+                        lifeImage[i].enabled = true;
                     }
                     break;
             }
@@ -298,7 +330,7 @@ public class Nave0 : MonoBehaviour
                     }
                     break;
                 case 6:
-                    endTimeShotActive = 2;
+                    endTimeShotActive = 1;
 
                     if (ActiveDefense == false)
                     {
@@ -347,6 +379,75 @@ public class Nave0 : MonoBehaviour
                     else
                     {
                         ActiveDefense = false;
+                        timeShotActive = 0;
+                        shotsSkills = 0;
+                    }
+                    break;
+                case 9:
+                    endTimeShotActive = 5;
+                    if (timeShotActive < endTimeShotActive)
+                    {
+                        timeShotActive += 1 * Time.deltaTime;
+
+                        endTimeShot = 0.2f;
+
+                        if (timeShot < endTimeShot)
+                        {
+                            timeShot += 1 * Time.deltaTime;
+                        }
+                        else
+                        {
+                            LlamarDisparos(EsferaCeleste);
+                        }
+                    }
+                    if (timeShotActive > endTimeShotActive)
+                    {
+                        timeShotActive = 0;
+                        shotsSkills = 0;
+                    }
+                    break;
+                case 10:
+                    endTimeShotActive = 5;
+                    if (timeShotActive < endTimeShotActive)
+                    {
+                        timeShotActive += 1 * Time.deltaTime;
+
+                        endTimeShot = 0.2f;
+
+                        if (timeShot < endTimeShot)
+                        {
+                            timeShot += 1 * Time.deltaTime;
+                        }
+                        else
+                        {
+                            LlamarDisparos(EsferaAzul);
+                        }
+                    }
+                    if (timeShotActive > endTimeShotActive)
+                    {
+                        timeShotActive = 0;
+                        shotsSkills = 0;
+                    }
+                    break;
+                case 11:
+                    endTimeShotActive = 5;
+                    if (timeShotActive < endTimeShotActive)
+                    {
+                        timeShotActive += 1 * Time.deltaTime;
+
+                        endTimeShot = 0.2f;
+
+                        if (timeShot < endTimeShot)
+                        {
+                            timeShot += 1 * Time.deltaTime;
+                        }
+                        else
+                        {
+                            LlamarDisparos(EsferaRoja);
+                        }
+                    }
+                    if (timeShotActive > endTimeShotActive)
+                    {
                         timeShotActive = 0;
                         shotsSkills = 0;
                     }
@@ -428,7 +529,6 @@ public class Nave0 : MonoBehaviour
     private IEnumerator DefenseRed()
     {
         GameObject defense = Instantiate(lazers[7], positionsShots[5].position, Quaternion.identity);
-        defense.GetComponent<Defense>().endTimeActive = endTimeShotActive;
         defense.GetComponent<Defense>().useDefense = 2;
         ActiveDefense = true;
         yield return new WaitForSeconds(0.1f);
@@ -443,6 +543,79 @@ public class Nave0 : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         ActiveDefense = true;
     }
+    private void EsferaCeleste()
+    {
+        GameObject bulet = Instantiate(lazers[9], positionsShots[0].position, quaternion.identity);
+        bulet.GetComponent<Transform>().localScale = new Vector3(2, 2, 1);
+        bulet.GetComponent<Bullet>().bulletStatus = 0;
+        bulet.GetComponent<Bullet>().lifeBullet = 5;
+        bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+    }
+    private void EsferaAzul()
+    {
+        GameObject bulet = Instantiate(lazers[10], positionsShots[3].position, quaternion.identity);
+        bulet.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+        bulet.GetComponent<Bullet>().bulletStatus = 0;
+        bulet.GetComponent<Bullet>().lifeBullet = 5;
+        bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulets = Instantiate(lazers[10], positionsShots[4].position, quaternion.identity);
+        bulets.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+        bulets.GetComponent<Bullet>().bulletStatus = 0;
+        bulets.GetComponent<Bullet>().lifeBullet = 5;
+        bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet0 = Instantiate(lazers[10], positionsShots[1].position, quaternion.identity);
+        bulet0.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+        bulet0.GetComponent<Bullet>().bulletStatus = 0;
+        bulet0.GetComponent<Bullet>().lifeBullet = 5;
+        bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet1 = Instantiate(lazers[10], positionsShots[2].position, quaternion.identity);
+        bulet1.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+        bulet1.GetComponent<Bullet>().bulletStatus = 0;
+        bulet1.GetComponent<Bullet>().lifeBullet = 5;
+        bulet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+    }
+    private void EsferaRoja()
+    {
+        GameObject bulet = Instantiate(lazers[11], positionsShots[0].position, quaternion.identity);
+        bulet.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet.GetComponent<Bullet>().bulletStatus = 0;
+        bulet.GetComponent<Bullet>().lifeBullet = 5;
+        bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet0 = Instantiate(lazers[11], positionsShots[1].position, quaternion.identity);
+        bulet0.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet0.GetComponent<Bullet>().bulletStatus = 0;
+        bulet0.GetComponent<Bullet>().lifeBullet = 5;
+        bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet1 = Instantiate(lazers[11], positionsShots[2].position, quaternion.identity);
+        bulet1.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet1.GetComponent<Bullet>().bulletStatus = 0;
+        bulet1.GetComponent<Bullet>().lifeBullet = 5;
+        bulet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet2 = Instantiate(lazers[11], positionsShots[3].position, quaternion.identity);
+        bulet2.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet2.GetComponent<Bullet>().bulletStatus = 0;
+        bulet2.GetComponent<Bullet>().lifeBullet = 5;
+        bulet2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet3 = Instantiate(lazers[11], positionsShots[4].position, quaternion.identity);
+        bulet3.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet3.GetComponent<Bullet>().bulletStatus = 0;
+        bulet3.GetComponent<Bullet>().lifeBullet = 5;
+        bulet3.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        GameObject bulet4 = Instantiate(lazers[11], positionsShots[5].position, quaternion.identity);
+        bulet4.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        bulet4.GetComponent<Bullet>().bulletStatus = 0;
+        bulet4.GetComponent<Bullet>().lifeBullet = 5;
+        bulet4.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+    }
     // ACTIVAR LAS HABILIDADES  //
     private void UseHability()
     {
@@ -456,44 +629,34 @@ public class Nave0 : MonoBehaviour
                     switch (habilityActive)
                     {
                         // Rafagas de lazers
-                        case 1:
+                        case 3:
                             shotsSkills = 3;
                             break;
-                        case 2:
+                        case 4:
                             shotsSkills = 4;
                             break;
-                        case 3:
+                        case 5:
                             shotsSkills = 5;
                             break;
                         // defensas
-                        case 4:
+                        case 6:
                             shotsSkills = 6;
                             break;
-                        case 5:
+                        case 7:
                             shotsSkills = 7;
                             break;
-                        case 6:
+                        case 8:
                             shotsSkills = 8;
                             break;
                         // Esferas lazers
-                        case 7:
-
-                            break;
-                        case 8:
-
-                            break;
                         case 9:
-
+                            shotsSkills = 9;
                             break;
-
                         case 10:
-
+                            shotsSkills = 10;
                             break;
                         case 11:
-
-                            break;
-                        case 12:
-
+                            shotsSkills = 11;
                             break;
                     }
                 }

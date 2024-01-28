@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bullet
   - PowerUp
+  - L0
+  - L1
+  - L2
   layers:
   - Default
   - TransparentFX

@@ -101,12 +101,6 @@ public class PowerUps : MonoBehaviour
                 case 12:
                     spriteRenderer.sprite = sprite[12];
                 break;
-                case 13:
-                    spriteRenderer.sprite = sprite[13];
-                break;
-                case 14:
-                    spriteRenderer.sprite = sprite[14];
-                break;
             }
         }
     }

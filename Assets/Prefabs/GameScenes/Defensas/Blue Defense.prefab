@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5611d66878695ba4e90dce4f9b8d5d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenseActive: 0
+  defenseActive: 1
   useDefense: 0
   nave0: {fileID: 0}
   positionDefense: {fileID: 0}
