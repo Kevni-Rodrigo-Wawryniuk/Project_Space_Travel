@@ -15,7 +15,6 @@ public class StartMenu : MonoBehaviour
     public static StartMenu startMenu;
     [Header("Scripts")]
     [SerializeField] KeyControlAssing keyControlAssing;
-    [SerializeField] InputSystemUIInputModule inputSystemUIInputModule;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] ControlResolution_1 controlResolution_1;
     [SerializeField] ControlQuality controlQuality;
@@ -27,7 +26,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] int objectStartScreemSeletion, objectNaveSelection, objectLevelsScreemSelection, objetoLevelButtonSelection, objectSettingScreemSeletion, objectSettingKeyControlScreemSeletion, objectQuitScreemSeletion;
     [SerializeField] Transform[] positionNave;
     [SerializeField] GameObject[] buttonStartScreem, naveSelection, buttonLevelScreem, buttonSettingsScreem, buttonSettingKeyControl, buttonQuitScreem;
-    [SerializeField] public GameObject[] buttonStartScreemEventSystem, buttonSettingScreemEventSystem, buttonSettingKeyControlEventSystem, buttonQuitScreemEventSystem, buttonLevelScreemEventSystem;
+    public GameObject[] buttonStartScreemEventSystem, buttonSettingScreemEventSystem, buttonSettingKeyControlEventSystem, buttonQuitScreemEventSystem, buttonLevelScreemEventSystem;
     [SerializeField] GameObject[] backGroundPlanets, naves;
     [SerializeField] MeshRenderer[] stars;
     [SerializeField] bool naveASeleccionar, moveMenus;
@@ -43,7 +42,6 @@ public class StartMenu : MonoBehaviour
 
         keyControlAssing = GetComponent<KeyControlAssing>();
         eventSystem = GetComponent<EventSystem>();
-        inputSystemUIInputModule = GetComponent<InputSystemUIInputModule>();
         controlResolution_1 = GetComponent<ControlResolution_1>();
         controlQuality = GetComponent<ControlQuality>();
         screemActive = GetComponent<ScreemActive>();
@@ -174,24 +172,7 @@ public class StartMenu : MonoBehaviour
     //      CARGAR SCENA    //
     public void PassScene()
     {
-        switch (objectLevelsScreemSelection)
-        {
-            case 0:
-                PlayerPrefs.SetInt("Level", 2);
-                break;
-            case 1:
-                PlayerPrefs.SetInt("Level", 3);
-                break;
-            case 2:
-                PlayerPrefs.SetInt("Level", 4);
-                break;
-            case 3:
-                PlayerPrefs.SetInt("Level", 5);
-                break;
-            case 4:
-                PlayerPrefs.SetInt("Level", 6);
-                break;
-        }
+        PlayerPrefs.SetInt("Level", 2);
     }
     //                      //
 
@@ -228,14 +209,16 @@ public class StartMenu : MonoBehaviour
     public void SumarValorDeNivel()
     {
         objectLevelsScreemSelection++;
-        if(objectLevelsScreemSelection > 4){
+        if (objectLevelsScreemSelection > 4)
+        {
             objectLevelsScreemSelection = 4;
         }
     }
     public void RestarValorDeNivel()
     {
         objectLevelsScreemSelection--;
-        if(objectLevelsScreemSelection < 0){
+        if (objectLevelsScreemSelection < 0)
+        {
             objectLevelsScreemSelection = 0;
         }
     }
@@ -508,6 +491,7 @@ public class StartMenu : MonoBehaviour
                     backGroundPlanets[2].transform.position = new Vector3(40, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(60, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(80, 0, 0);
+                    PlayerPrefs.SetInt("LevelSelection", 0);
                     break;
                 case 1:
                     backGroundPlanets[0].transform.position = new Vector3(-20, 0, 0);
@@ -515,6 +499,7 @@ public class StartMenu : MonoBehaviour
                     backGroundPlanets[2].transform.position = new Vector3(20, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(40, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(60, 0, 0);
+                    PlayerPrefs.SetInt("LevelSelection", 1);
                     break;
                 case 2:
                     backGroundPlanets[0].transform.position = new Vector3(-40, 0, 0);
@@ -522,6 +507,7 @@ public class StartMenu : MonoBehaviour
                     backGroundPlanets[2].transform.position = new Vector3(0, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(20, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(40, 0, 0);
+                    PlayerPrefs.SetInt("LevelSelection", 2);
                     break;
                 case 3:
                     backGroundPlanets[0].transform.position = new Vector3(-60, 0, 0);
@@ -529,6 +515,7 @@ public class StartMenu : MonoBehaviour
                     backGroundPlanets[2].transform.position = new Vector3(-20, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(0, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(20, 0, 0);
+                    PlayerPrefs.SetInt("LevelSelection", 3);
                     break;
                 case 4:
                     backGroundPlanets[0].transform.position = new Vector3(-80, 0, 0);
@@ -536,6 +523,7 @@ public class StartMenu : MonoBehaviour
                     backGroundPlanets[2].transform.position = new Vector3(-40, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(-20, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(0, 0, 0);
+                    PlayerPrefs.SetInt("LevelSelection", 4);
                     break;
             }
             switch (objetoLevelButtonSelection)

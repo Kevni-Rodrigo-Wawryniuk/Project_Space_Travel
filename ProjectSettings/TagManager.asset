@@ -9,6 +9,7 @@ TagManager:
   - L0
   - L1
   - L2
+  - Meteoro
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - Bullet
   - PowerUp
-  - 
+  - Meteoro
   - 
   - 
   - 

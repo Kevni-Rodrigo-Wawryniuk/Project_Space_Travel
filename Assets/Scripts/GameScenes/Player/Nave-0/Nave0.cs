@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
+using UnityEngine.Rendering;
 
 public class Nave0 : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class Nave0 : MonoBehaviour
     [SerializeField] KeyControlAssingPlay keyControlAssingPlay;
     [SerializeField] PowerUps powerUps;
     [SerializeField] ControlHabilityActive controlHabilityActive;
+    [SerializeField] GameScene2 gameScene2;
+
+    [Header("Escena Inicial")]
+    public bool startScene;
+    [SerializeField] float startSpeedY;
+    public bool StartSceneActive;
 
     [Header("Vidas")]
     public bool lifes;
@@ -57,12 +64,12 @@ public class Nave0 : MonoBehaviour
         ani = GetComponent<Animator>();
         keyControlAssingPlay = GameObject.Find("Scripts").GetComponent<KeyControlAssingPlay>();
         controlHabilityActive = GameObject.Find("Scripts").GetComponent<ControlHabilityActive>();
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
 
-        // activar todas las funciones
-        lifes = true;
-        hability = true;
-        disparos = true;
-        movimiento = true;
+        // activar la escena inicial
+        startScene = true;
+        StartSceneActive = true;
+        startSpeedY = 0.02f;
         // valores de las habilidades
         lifePoint = 3;
         forceShotx = 20;
@@ -92,6 +99,7 @@ public class Nave0 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartScene();
         HabilitysAndShots();
         UseHability();
         Life();
@@ -118,6 +126,43 @@ public class Nave0 : MonoBehaviour
             }
         }
     }
+
+    //  QUITAR VIDA //
+    public void DownLife(int Value)
+    {
+        lifePoint -= Value;
+    }
+
+    //   ESCENA AL INICIAR   //
+    private void StartScene()
+    {
+        if (startScene == true)
+        {
+            if (StartSceneActive == true)
+            {
+                if (transform.position.y < 0)
+                {
+                    transform.Translate(Vector3.up * startSpeedY, Space.World);
+
+                    movimiento = false;
+                    disparos = false;
+                    hability = false;
+
+                    gameScene2.canavasPlay = false;
+                    gameScene2.canvasPause = false;
+                }
+                if (transform.position.y >= 0)
+                {
+                    movimiento = true;
+                    disparos = true;
+                    hability = true;
+                    gameScene2.canavasPlay = true;
+                    StartSceneActive = false;
+                }
+            }
+        }
+    }
+
     //      MOVIMIENTO      //
     public void Movimiento()
     {
@@ -338,6 +383,7 @@ public class Nave0 : MonoBehaviour
                     }
                     if (timeShotActive < endTimeShotActive)
                     {
+                        LlamarDisparos(DisparoCeleste);
                         timeShotActive += 1 * Time.deltaTime;
                     }
                     else
@@ -356,6 +402,7 @@ public class Nave0 : MonoBehaviour
                     }
                     if (timeShotActive < endTimeShotActive)
                     {
+                        LlamarDisparos(DisparoCeleste);
                         timeShotActive += 1 * Time.deltaTime;
                     }
                     else
@@ -374,6 +421,7 @@ public class Nave0 : MonoBehaviour
                     }
                     if (timeShotActive < endTimeShotActive)
                     {
+                        LlamarDisparos(DisparoCeleste);
                         timeShotActive += 1 * Time.deltaTime;
                     }
                     else
@@ -628,6 +676,15 @@ public class Nave0 : MonoBehaviour
                     controlHabilityActive.useHability = true;
                     switch (habilityActive)
                     {
+                        case 0:
+                            controlHabilityActive.useHability = false;
+                            break;
+                        case 1:
+                            controlHabilityActive.useHability = false;
+                            break;
+                        case 2:
+                            controlHabilityActive.useHability = false;
+                            break;
                         // Rafagas de lazers
                         case 3:
                             shotsSkills = 3;

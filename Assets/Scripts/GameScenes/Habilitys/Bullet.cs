@@ -35,6 +35,14 @@ public class Bullet : MonoBehaviour
         Limit();
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Meteoro"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     // Limitar las posiciones donde puede estar la bala //
     public void Limit()
     {
