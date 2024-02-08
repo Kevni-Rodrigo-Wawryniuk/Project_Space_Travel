@@ -15,11 +15,16 @@ public class GameScene2 : MonoBehaviour
     [SerializeField] Nave0 nave0;
     [SerializeField] LevelsActive levelsActive;
 
-    [Header("Niveles Activos")]
+    [Header("Puntos")]
+    public int metheorosPoints;
+    [SerializeField] TextMeshProUGUI textPoints;
 
+    [Header("Niveles Activos")]
     public bool gameActive;
     [SerializeField] int levelValue;
-    [SerializeField] float tiemGame, endTimeGame;
+    [SerializeField] float tiemGame, endTimeGame, timeMicroSecond;
+    [SerializeField] int timeMinut, timeSecond;
+    [SerializeField] TextMeshProUGUI textTimegame;
     [SerializeField] bool bossActive;
 
     [Header("Tiempo de invocacion: Meteoros, enemigos")]
@@ -55,6 +60,8 @@ public class GameScene2 : MonoBehaviour
 
         positionStart = GameObject.Find("PositionStart").transform;
         levelValue = GameObject.Find("Levels").GetComponent<LevelsActive>().backGroundActive;
+        textPoints = GameObject.Find("TextPoint").GetComponent<TextMeshProUGUI>();
+        textTimegame = GameObject.Find("TiempoDeJuego").GetComponent<TextMeshProUGUI>();
 
         gameActive = true;
         obstacles = true;
@@ -93,28 +100,28 @@ public class GameScene2 : MonoBehaviour
             switch (levelValue)
             {
                 case 0:
-                    endTimeMeteoro = 2;
-                    endTimeEnemy = 4;
+                    endTimeMeteoro = 1;
+                    endTimeEnemy = 5;
                     endTimeGame = 15;
                     break;
                 case 1:
-                    endTimeMeteoro = 2;
-                    endTimeEnemy = 4;
+                    endTimeMeteoro = 1;
+                    endTimeEnemy = 5;
                     endTimeGame = 15;
                     break;
                 case 2:
-                    endTimeMeteoro = 2;
-                    endTimeEnemy = 4;
+                    endTimeMeteoro = 1;
+                    endTimeEnemy = 5;
                     endTimeGame = 15;
                     break;
                 case 3:
-                    endTimeMeteoro = 2;
-                    endTimeEnemy = 4;
+                    endTimeMeteoro = 1;
+                    endTimeEnemy = 5;
                     endTimeGame = 15;
                     break;
                 case 4:
-                    endTimeMeteoro = 2;
-                    endTimeEnemy = 4;
+                    endTimeMeteoro = 1;
+                    endTimeEnemy = 5;
                     endTimeGame = 15;
                     break;
             }
@@ -139,6 +146,45 @@ public class GameScene2 : MonoBehaviour
         {
             if (nave0.StartSceneActive == false)
             {
+                textPoints.text = metheorosPoints.ToString();
+
+                if (timeMinut > 10 && timeSecond < 10)
+                {
+                    textTimegame.text = timeMinut.ToString() + " : 0" + timeSecond.ToString();
+                }
+                if(timeMinut > 10 && timeSecond > 10)
+                {
+                    textTimegame.text = timeMinut.ToString() + " : " + timeSecond.ToString();    
+                }
+                if (timeMinut < 10)
+                {
+                    textTimegame.text = " 0" + timeMinut.ToString() + " : " + timeSecond.ToString();
+
+                    if (timeSecond < 10)
+                    {
+                        textTimegame.text = timeMinut.ToString() + " : 0" + timeSecond.ToString();
+                    }
+                    if (timeSecond < 10 && timeMinut < 10)
+                    {
+                        textTimegame.text = "0" + timeMinut.ToString() + " : 0" + timeSecond.ToString();
+                    }
+                }
+
+                if (timeMicroSecond < 60)
+                {
+                    timeMicroSecond += 20 * Time.deltaTime;
+                }
+                if (timeMicroSecond >= 60)
+                {
+                    timeSecond++;
+                    timeMicroSecond = 0;
+                }
+                if (timeSecond >= 60)
+                {
+                    timeMinut++;
+                    timeSecond = 0;
+                }
+
                 switch (levelValue)
                 {
                     case 0:
@@ -149,7 +195,7 @@ public class GameScene2 : MonoBehaviour
                         if (tiemGame > 5)
                         {
                             tiemGame += 1 * Time.deltaTime;
-                            endTimeMeteoro = 1.5f;
+                            endTimeMeteoro = 1;
                         }
                         if (tiemGame > 10)
                         {

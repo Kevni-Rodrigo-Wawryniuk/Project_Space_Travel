@@ -227,4 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c998232805005941b3c5088ac9fc84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rgb: {fileID: 0}
   nave0: {fileID: 0}
+  naveSelection: 0
+  moviments: 0
+  speedX: 0
+  speedY: 0
+  explocion: {fileID: 6795313297893335458, guid: ba99a1fea98b54e42bdbd15de8256c1c, type: 3}
