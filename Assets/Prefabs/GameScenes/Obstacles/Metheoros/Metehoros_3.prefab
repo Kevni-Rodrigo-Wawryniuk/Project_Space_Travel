@@ -212,7 +212,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
 --- !u!114 &4346546526962812370
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c998232805005941b3c5088ac9fc84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene2: {fileID: 0}
   rgb: {fileID: 0}
   nave0: {fileID: 0}
   naveSelection: 0

@@ -2261,7 +2261,7 @@ GameObject:
   - component: {fileID: 1439457783}
   - component: {fileID: 1439457782}
   m_Layer: 5
-  m_Name: TextPoint
+  m_Name: TextMetheorosPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3204,7 +3204,7 @@ MonoBehaviour:
   nave0: {fileID: 0}
   levelsActive: {fileID: 0}
   metheorosPoints: 0
-  textPoints: {fileID: 0}
+  textMetheors: {fileID: 0}
   gameActive: 1
   levelValue: 0
   tiemGame: 0

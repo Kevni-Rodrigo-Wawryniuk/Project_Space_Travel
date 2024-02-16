@@ -17,7 +17,7 @@ public class GameScene2 : MonoBehaviour
 
     [Header("Puntos")]
     public int metheorosPoints;
-    [SerializeField] TextMeshProUGUI textPoints;
+    [SerializeField] TextMeshProUGUI textMetheors;
 
     [Header("Niveles Activos")]
     public bool gameActive;
@@ -60,7 +60,7 @@ public class GameScene2 : MonoBehaviour
 
         positionStart = GameObject.Find("PositionStart").transform;
         levelValue = GameObject.Find("Levels").GetComponent<LevelsActive>().backGroundActive;
-        textPoints = GameObject.Find("TextPoint").GetComponent<TextMeshProUGUI>();
+        textMetheors = GameObject.Find("TextMetheorosPoint").GetComponent<TextMeshProUGUI>();
         textTimegame = GameObject.Find("TiempoDeJuego").GetComponent<TextMeshProUGUI>();
 
         gameActive = true;
@@ -102,30 +102,31 @@ public class GameScene2 : MonoBehaviour
                 case 0:
                     endTimeMeteoro = 1;
                     endTimeEnemy = 5;
-                    endTimeGame = 15;
+                    endTimeGame =  5;
                     break;
                 case 1:
                     endTimeMeteoro = 1;
                     endTimeEnemy = 5;
-                    endTimeGame = 15;
+                    endTimeGame = 5;
                     break;
                 case 2:
                     endTimeMeteoro = 1;
                     endTimeEnemy = 5;
-                    endTimeGame = 15;
+                    endTimeGame = 5;
                     break;
                 case 3:
                     endTimeMeteoro = 1;
                     endTimeEnemy = 5;
-                    endTimeGame = 15;
+                    endTimeGame = 5;
                     break;
                 case 4:
                     endTimeMeteoro = 1;
                     endTimeEnemy = 5;
-                    endTimeGame = 15;
+                    endTimeGame = 5;
                     break;
             }
         }
+       
         canvasControl = true;
         bossActive = false;
     }
@@ -146,15 +147,15 @@ public class GameScene2 : MonoBehaviour
         {
             if (nave0.StartSceneActive == false)
             {
-                textPoints.text = metheorosPoints.ToString();
+                textMetheors.text = metheorosPoints.ToString();
 
                 if (timeMinut > 10 && timeSecond < 10)
                 {
                     textTimegame.text = timeMinut.ToString() + " : 0" + timeSecond.ToString();
                 }
-                if(timeMinut > 10 && timeSecond > 10)
+                if (timeMinut > 10 && timeSecond > 10)
                 {
-                    textTimegame.text = timeMinut.ToString() + " : " + timeSecond.ToString();    
+                    textTimegame.text = timeMinut.ToString() + " : " + timeSecond.ToString();
                 }
                 if (timeMinut < 10)
                 {
