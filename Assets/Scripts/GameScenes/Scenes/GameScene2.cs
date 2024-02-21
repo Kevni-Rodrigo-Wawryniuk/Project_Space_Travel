@@ -8,7 +8,9 @@ using Random = UnityEngine.Random;
 using System.Runtime.InteropServices;
 using System.Linq.Expressions;
 using System.Data.Common;
-
+using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
+using Quaternion = UnityEngine.Quaternion;
 public class GameScene2 : MonoBehaviour
 {
     public static GameScene2 gameScene2;
@@ -22,7 +24,7 @@ public class GameScene2 : MonoBehaviour
     [Header("Niveles Activos")]
     public bool gameActive;
     [SerializeField] int levelValue;
-    [SerializeField] float tiemGame, endTimeGame, timeMicroSecond;
+    [SerializeField] float endTimeGame, timeMicroSecond;
     [SerializeField] int timeMinut, timeSecond;
     [SerializeField] TextMeshProUGUI textTimegame;
     [SerializeField] bool bossActive;
@@ -31,8 +33,9 @@ public class GameScene2 : MonoBehaviour
     public bool obstacles;
     [SerializeField] GameObject[] meteoros;
     [SerializeField] float timeMeteoro, endTimeMeteoro;
-    public bool enemy;
-    [SerializeField] float timeEnemy, endTimeEnemy;
+    public bool bomb;
+    [SerializeField] GameObject bombs;
+    [SerializeField] float timeBombs, endTimeBombs;
 
     [Header("Nave")]
     [SerializeField] Transform positionStart;
@@ -64,9 +67,6 @@ public class GameScene2 : MonoBehaviour
         textTimegame = GameObject.Find("TiempoDeJuego").GetComponent<TextMeshProUGUI>();
 
         gameActive = true;
-        obstacles = true;
-        enemy = true;
-
         switch (nave)
         {
             case 0:
@@ -100,33 +100,43 @@ public class GameScene2 : MonoBehaviour
             switch (levelValue)
             {
                 case 0:
+                    obstacles = true;
+
                     endTimeMeteoro = 1;
-                    endTimeEnemy = 5;
-                    endTimeGame =  5;
+                    endTimeGame = 2;
                     break;
                 case 1:
+                    obstacles = true;
+                    bomb = true;
+
                     endTimeMeteoro = 1;
-                    endTimeEnemy = 5;
-                    endTimeGame = 5;
+                    endTimeBombs = 3;
+                    endTimeGame = 2;
                     break;
                 case 2:
+                    obstacles = true;
+                    bomb = true;
+
                     endTimeMeteoro = 1;
-                    endTimeEnemy = 5;
-                    endTimeGame = 5;
+                    endTimeGame = 2;
                     break;
                 case 3:
+                    obstacles = true;
+                    bomb = true;
+
                     endTimeMeteoro = 1;
-                    endTimeEnemy = 5;
-                    endTimeGame = 5;
+                    endTimeGame = 2;
                     break;
                 case 4:
+                    obstacles = true;
+                    bomb = true;
+
                     endTimeMeteoro = 1;
-                    endTimeEnemy = 5;
-                    endTimeGame = 5;
+                    endTimeGame = 2;
                     break;
             }
         }
-       
+
         canvasControl = true;
         bossActive = false;
     }
@@ -136,7 +146,10 @@ public class GameScene2 : MonoBehaviour
     {
         ControlGame();
         PowerUps();
+        
         Obstacle();
+        Bombs();
+
         CanvasControl();
     }
 
@@ -173,7 +186,7 @@ public class GameScene2 : MonoBehaviour
 
                 if (timeMicroSecond < 60)
                 {
-                    timeMicroSecond += 20 * Time.deltaTime;
+                    timeMicroSecond += 60 * Time.deltaTime;
                 }
                 if (timeMicroSecond >= 60)
                 {
@@ -188,22 +201,10 @@ public class GameScene2 : MonoBehaviour
 
                 switch (levelValue)
                 {
+                    // Tiempo de juego simple 2 minutos 
+                    // una vez pasan los dos minutos sale el boss 
                     case 0:
-                        if (tiemGame < 5)
-                        {
-                            tiemGame += 1 * Time.deltaTime;
-                        }
-                        if (tiemGame > 5)
-                        {
-                            tiemGame += 1 * Time.deltaTime;
-                            endTimeMeteoro = 1;
-                        }
-                        if (tiemGame > 10)
-                        {
-                            tiemGame += 1 * Time.deltaTime;
-                            endTimeMeteoro = 1;
-                        }
-                        if (tiemGame > 15)
+                        if (timeMinut >= endTimeGame)
                         {
                             // invocar al jefe y falsear el booleno
                             if (bossActive == true)
@@ -260,7 +261,7 @@ public class GameScene2 : MonoBehaviour
             }
         }
     }
-    //  PRUEBA DE OBSTACULOS   //
+    //  METHEOROS   //
     private void Obstacle()
     {
         if (obstacles == true)
@@ -283,4 +284,26 @@ public class GameScene2 : MonoBehaviour
             }
         }
     }
+    //  BOMBAS  //
+    private void Bombs()
+    {
+        if (bomb == true)
+        {
+            if (nave0.StartSceneActive == false)
+            {
+                if (timeBombs < endTimeBombs)
+                {
+                    timeBombs += 1 * Time.deltaTime;
+                }
+                if (timeBombs >= endTimeBombs)
+                {
+                    float positionX, positionY = 12;
+                    positionX = Random.Range(-18, 18);
+                    Instantiate(bombs, new Vector2(positionX,positionY), quaternion.identity);
+                    timeBombs = 0;
+                }
+            }
+        }
+    }
+
 }
