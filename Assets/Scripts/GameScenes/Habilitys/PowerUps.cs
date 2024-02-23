@@ -46,6 +46,8 @@ public class PowerUps : MonoBehaviour
     //      LIMITES      //
     public void Limits()
     {
+        rgb.velocity = new Vector2(0, -4);
+
         if (transform.position.y < -13)
         {
             Destroy(this.gameObject);

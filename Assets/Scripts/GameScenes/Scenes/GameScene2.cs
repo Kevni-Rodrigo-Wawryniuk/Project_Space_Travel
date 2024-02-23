@@ -14,7 +14,7 @@ using Quaternion = UnityEngine.Quaternion;
 public class GameScene2 : MonoBehaviour
 {
     public static GameScene2 gameScene2;
-    [SerializeField] Nave0 nave0;
+    public Nave0 nave0;
     [SerializeField] LevelsActive levelsActive;
 
     [Header("Puntos")]
@@ -41,10 +41,6 @@ public class GameScene2 : MonoBehaviour
     [SerializeField] Transform positionStart;
     public int nave;
     [SerializeField] GameObject[] naves;
-
-    [Header("Power Ups")]
-    public bool powers;
-    [SerializeField] GameObject powerUp;
 
     [Header("Canvas Control")]
     public bool canvasControl;
@@ -110,7 +106,7 @@ public class GameScene2 : MonoBehaviour
                     bomb = true;
 
                     endTimeMeteoro = 1;
-                    endTimeBombs = 3;
+                    endTimeBombs = 5;
                     endTimeGame = 2;
                     break;
                 case 2:
@@ -118,6 +114,7 @@ public class GameScene2 : MonoBehaviour
                     bomb = true;
 
                     endTimeMeteoro = 1;
+                    endTimeBombs = 10;
                     endTimeGame = 2;
                     break;
                 case 3:
@@ -125,6 +122,7 @@ public class GameScene2 : MonoBehaviour
                     bomb = true;
 
                     endTimeMeteoro = 1;
+                    endTimeBombs = 15;
                     endTimeGame = 2;
                     break;
                 case 4:
@@ -132,6 +130,7 @@ public class GameScene2 : MonoBehaviour
                     bomb = true;
 
                     endTimeMeteoro = 1;
+                    endTimeBombs = 20;
                     endTimeGame = 2;
                     break;
             }
@@ -145,7 +144,6 @@ public class GameScene2 : MonoBehaviour
     void Update()
     {
         ControlGame();
-        PowerUps();
         
         Obstacle();
         Bombs();
@@ -245,22 +243,7 @@ public class GameScene2 : MonoBehaviour
         canvasPause = !canvasPause;
 
     }
-    //   PRUEBA DE HABILIDADES   //
-    private void PowerUps()
-    {
-        if (powers == true)
-        {
-            if (nave0.StartSceneActive == false)
-            {
-                if (Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    float positionX, positionY = 12;
-                    positionX = Random.Range(-18, 18);
-                    Instantiate(powerUp, new Vector2(positionX, positionY), Quaternion.identity);
-                }
-            }
-        }
-    }
+
     //  METHEOROS   //
     private void Obstacle()
     {

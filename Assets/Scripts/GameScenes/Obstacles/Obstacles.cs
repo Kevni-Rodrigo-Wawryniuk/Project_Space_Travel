@@ -106,5 +106,10 @@ public class Obstacles : MonoBehaviour
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);  
         }
+        if(other.CompareTag("Defense"))
+        {
+            Destroy(this.gameObject);
+            Instantiate(explocion, transform.position, quaternion.identity);      
+        }
     }
 }
