@@ -12,6 +12,8 @@ TagManager:
   - Meteoro
   - Defense
   - Booss
+  - BulletBoss
+  - LazerBoss
   layers:
   - Default
   - TransparentFX

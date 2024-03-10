@@ -52,6 +52,8 @@ public class Nave0 : MonoBehaviour
     [Header("Movimiento")]
     public bool movimiento;
     [SerializeField] float speedX, speedY, positionNaveX, positionNaveY;
+    [SerializeField] Vector2 positionOfRebote;
+    [SerializeField] int valor;
     // Start is called before the first frame update
     void Start()
     {
@@ -103,6 +105,14 @@ public class Nave0 : MonoBehaviour
         HabilitysAndShots();
         UseHability();
         Life();
+
+        positionNaveX = transform.position.x;
+        positionNaveY = transform.position.y;
+
+        positionNaveX = Mathf.Clamp(positionNaveX, -18, 18);
+        positionNaveY = Mathf.Clamp(positionNaveY, -10, 10);
+
+        transform.position = new Vector2(positionNaveX, positionNaveY);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -125,12 +135,56 @@ public class Nave0 : MonoBehaviour
                 controlHabilityActive.habilityValue = habilityActive;
             }
         }
+        
+        if (other.CompareTag("LazerBoss"))
+        {
+            positionOfRebote = positionOfRebote = other.GetComponent<LazerControl>().transform.position;
+            StartCoroutine(Rebote(positionOfRebote));
+        }
     }
 
     //  QUITAR VIDA //
     public void DownLife(int Value)
     {
-        lifePoint -= Value;
+        if (lifes == true)
+        {
+            lifePoint -= Value;
+        }
+    }
+    private IEnumerator Rebote(Vector2 position)
+    {
+        movimiento = false;
+        lifes = false;
+
+        Debug.Log(position);
+
+        rgb.AddForce(new Vector2(0, 0));
+        rgb.velocity = new Vector2(0, 0);
+
+        if (position.x > transform.position.x)
+        {
+            valor = 1;
+        }
+        if (position.x < transform.position.x)
+        {
+            valor = 2;
+        }
+        Debug.Log(" valor --> " + valor);
+
+        if (valor == 2)
+        {
+            //rgb.AddForce(new Vector2(500, 0), ForceMode2D.Impulse);
+            rgb.velocity = new Vector2(10, 0);
+        }
+        if (valor == 1)
+        {
+            //rgb.AddForce(new Vector2(-500, 0), ForceMode2D.Impulse);
+            rgb.velocity = new Vector2(-10, 0);
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        movimiento = true;
+        lifes = true;
     }
 
     //   ESCENA AL INICIAR   //
@@ -192,16 +246,6 @@ public class Nave0 : MonoBehaviour
             {
                 rgb.velocity = new Vector2(0, 0);
             }
-
-
-
-            positionNaveX = transform.position.x;
-            positionNaveY = transform.position.y;
-
-            positionNaveX = Mathf.Clamp(positionNaveX, -18, 18);
-            positionNaveY = Mathf.Clamp(positionNaveY, -10, 10);
-
-            transform.position = new Vector2(positionNaveX, positionNaveY);
         }
     }
     //       VIDAS         //
@@ -518,19 +562,18 @@ public class Nave0 : MonoBehaviour
     private void DisparoCeleste()
     {
         GameObject bulets = Instantiate(lazers[0], positionsShots[0].position, quaternion.identity);
-        bulets.GetComponent<Bullet>().bulletStatus = 0;
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void DisparoAzul()
     {
         GameObject bulets = Instantiate(lazers[2], positionsShots[0].position, quaternion.identity);
-        bulets.GetComponent<Bullet>().bulletStatus = 1;
+
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void DisparoRojo()
     {
         GameObject bulets = Instantiate(lazers[1], positionsShots[0].position, quaternion.identity);
-        bulets.GetComponent<Bullet>().bulletStatus = 2;
+
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
     }
@@ -539,29 +582,25 @@ public class Nave0 : MonoBehaviour
     private void LazerRedBurst()
     {
         GameObject bulet = Instantiate(lazers[3], positionsShots[0].position, quaternion.identity);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
+
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void LazerCelestialBurst()
     {
         GameObject bulet = Instantiate(lazers[4], positionsShots[1].position, quaternion.identity);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulets = Instantiate(lazers[4], positionsShots[2].position, quaternion.identity);
-        bulets.GetComponent<Bullet>().bulletStatus = 0;
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void LazerBlueBurst()
     {
         GameObject bulet = Instantiate(lazers[5], positionsShots[3].position, quaternion.identity);
         bulet.GetComponent<Transform>().localEulerAngles = new Vector3(0, 0, 30);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-forceShotx, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulets = Instantiate(lazers[5], positionsShots[4].position, quaternion.identity);
         bulets.GetComponent<Transform>().localEulerAngles = new Vector3(0, 0, -30);
-        bulets.GetComponent<Bullet>().bulletStatus = 0;
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(forceShotx, forceShoty), ForceMode2D.Impulse);
     }
     private IEnumerator DefenseGreen()
@@ -595,72 +634,60 @@ public class Nave0 : MonoBehaviour
     {
         GameObject bulet = Instantiate(lazers[9], positionsShots[0].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(2, 2, 1);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
-        bulet.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void EsferaAzul()
     {
         GameObject bulet = Instantiate(lazers[10], positionsShots[3].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
-        bulet.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulets = Instantiate(lazers[10], positionsShots[4].position, quaternion.identity);
         bulets.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-        bulets.GetComponent<Bullet>().bulletStatus = 0;
-        bulets.GetComponent<Bullet>().lifeBullet = 5;
+
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet0 = Instantiate(lazers[10], positionsShots[1].position, quaternion.identity);
         bulet0.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-        bulet0.GetComponent<Bullet>().bulletStatus = 0;
-        bulet0.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet1 = Instantiate(lazers[10], positionsShots[2].position, quaternion.identity);
         bulet1.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-        bulet1.GetComponent<Bullet>().bulletStatus = 0;
-        bulet1.GetComponent<Bullet>().lifeBullet = 5;
         bulet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
     }
     private void EsferaRoja()
     {
         GameObject bulet = Instantiate(lazers[11], positionsShots[0].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet.GetComponent<Bullet>().bulletStatus = 0;
-        bulet.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet0 = Instantiate(lazers[11], positionsShots[1].position, quaternion.identity);
         bulet0.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet0.GetComponent<Bullet>().bulletStatus = 0;
-        bulet0.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet1 = Instantiate(lazers[11], positionsShots[2].position, quaternion.identity);
         bulet1.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet1.GetComponent<Bullet>().bulletStatus = 0;
-        bulet1.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet2 = Instantiate(lazers[11], positionsShots[3].position, quaternion.identity);
         bulet2.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet2.GetComponent<Bullet>().bulletStatus = 0;
-        bulet2.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet3 = Instantiate(lazers[11], positionsShots[4].position, quaternion.identity);
         bulet3.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet3.GetComponent<Bullet>().bulletStatus = 0;
-        bulet3.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet3.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet4 = Instantiate(lazers[11], positionsShots[5].position, quaternion.identity);
         bulet4.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-        bulet4.GetComponent<Bullet>().bulletStatus = 0;
-        bulet4.GetComponent<Bullet>().lifeBullet = 5;
+
         bulet4.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
     }

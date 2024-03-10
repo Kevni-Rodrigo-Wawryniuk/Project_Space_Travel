@@ -212,8 +212,9 @@ GameObject:
   - component: {fileID: 51860716}
   - component: {fileID: 51860715}
   - component: {fileID: 51860718}
+  - component: {fileID: 51860719}
   m_Layer: 0
-  m_Name: Boss 0
+  m_Name: Boss_0
   m_TagString: Booss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1255114297, guid: 3c2c412a2e579274ea4f6c27894bea64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -280,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 51860712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: 0}
+  m_LocalPosition: {x: 11, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -438,6 +439,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &51860719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51860712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907975fb8d9f87345a7d6eb40926b8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &54368404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583273237}
   m_Layer: 0
-  m_Name: Lazer Point
+  m_Name: Lazer_Point
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1350,7 +1363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760632905}
   m_Layer: 0
-  m_Name: Shot Point I
+  m_Name: Shot_Point_I
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1800,7 +1813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924463239}
   m_Layer: 0
-  m_Name: Shot Point D
+  m_Name: Shot_Point_D
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3546,7 +3559,7 @@ MonoBehaviour:
   timeSecond: 0
   textTimegame: {fileID: 0}
   bossActive: 0
-  obstacles: 1
+  obstacles: 0
   meteoros:
   - {fileID: 1503500829603913015, guid: 1540f32e5836aec49867d7dfadf177bf, type: 3}
   - {fileID: 6542404065690310267, guid: 8cfc65c76bc7b16449368359e5c84bfd, type: 3}
