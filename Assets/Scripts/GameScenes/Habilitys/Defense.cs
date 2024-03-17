@@ -43,7 +43,7 @@ public class Defense : MonoBehaviour
             {
                 // defensa verde
                 case 1:
-                    endTimeActive = 2;
+                    endTimeActive = 0.5f;
 
                     if (timeActive < endTimeActive)
                     {
@@ -53,6 +53,7 @@ public class Defense : MonoBehaviour
                     }
                     if (timeActive >= endTimeActive)
                     {
+                        nave0.RestartLife(1);
                         Destroy(this.gameObject);
                         timeActive = 0;
                     }

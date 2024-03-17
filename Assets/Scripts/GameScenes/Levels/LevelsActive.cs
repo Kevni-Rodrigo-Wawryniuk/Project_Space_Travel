@@ -11,7 +11,7 @@ public class LevelsActive : MonoBehaviour
     [SerializeField] int naveSelection;
 
     [Header("Nivel Activado")]
-    public bool levelActive;
+    public bool levelActive, activarNave;
     public int backGroundActive;
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Texture[] textures;
@@ -30,6 +30,7 @@ public class LevelsActive : MonoBehaviour
         naveSelection = PlayerPrefs.GetInt("Nave", 0);
         speedBackGround = 0.5f;
 
+        activarNave = true;
     }
 
     // Update is called once per frame
@@ -66,31 +67,35 @@ public class LevelsActive : MonoBehaviour
     //  ACTIVAR NIVEL   //
     private void MoveLevel()
     {
-        switch (naveSelection)
-        {
-            case 0:
-                nave0 = GameObject.Find("Nave_0(Clone)").GetComponent<Nave0>();
-                break;
-            case 1:
-                nave0 = GameObject.Find("Nave_1(Clone)").GetComponent<Nave0>();
-                break;
-            case 2:
-                nave0 = GameObject.Find("Nave_2(Clone)").GetComponent<Nave0>();
-                break;
-            case 3:
-                nave0 = GameObject.Find("Nave_3(Clone)").GetComponent<Nave0>();
-                break;
-            case 4:
-                nave0 = GameObject.Find("Nave_4(Clone)").GetComponent<Nave0>();
-                break;
-            case 5:
-                nave0 = GameObject.Find("Nave_5(Clone)").GetComponent<Nave0>();
-                break;
-        }
 
-        if (nave0.StartSceneActive == false)
+        if (activarNave == true)
         {
-            meshRenderer.material.mainTextureOffset = meshRenderer.material.mainTextureOffset += new Vector2(0, speedBackGround) * Time.deltaTime;
+            switch (naveSelection)
+            {
+                case 0:
+                    nave0 = GameObject.Find("Nave_0(Clone)").GetComponent<Nave0>();
+                    break;
+                case 1:
+                    nave0 = GameObject.Find("Nave_1(Clone)").GetComponent<Nave0>();
+                    break;
+                case 2:
+                    nave0 = GameObject.Find("Nave_2(Clone)").GetComponent<Nave0>();
+                    break;
+                case 3:
+                    nave0 = GameObject.Find("Nave_3(Clone)").GetComponent<Nave0>();
+                    break;
+                case 4:
+                    nave0 = GameObject.Find("Nave_4(Clone)").GetComponent<Nave0>();
+                    break;
+                case 5:
+                    nave0 = GameObject.Find("Nave_5(Clone)").GetComponent<Nave0>();
+                    break;
+            }
+
+            if (nave0.StartSceneActive == false)
+            {
+                meshRenderer.material.mainTextureOffset = meshRenderer.material.mainTextureOffset += new Vector2(0, speedBackGround) * Time.deltaTime;
+            }
         }
     }
 }

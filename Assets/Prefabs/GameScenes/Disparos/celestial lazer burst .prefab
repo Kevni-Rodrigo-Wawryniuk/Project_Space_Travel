@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8435044164184228013}
   - component: {fileID: 2480981248773105668}
   - component: {fileID: 7545660094715332774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'celestial lazer burst '
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -216,5 +216,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781ed933cc5eae2479364d004b597af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeBullet: 2
-  bulletStatus: 0

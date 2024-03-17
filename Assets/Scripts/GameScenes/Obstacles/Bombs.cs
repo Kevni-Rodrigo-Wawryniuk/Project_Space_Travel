@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -22,6 +21,7 @@ public class Bombs : MonoBehaviour
     [SerializeField] GameObject hability;
     [SerializeField] GameObject explocion;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +39,15 @@ public class Bombs : MonoBehaviour
 
         vida = true;
 
-        lifeState = 4;
+        lifeState = 2;
     }
     // Update is called once per frame
     void Update()
     {
         Limit();
         EstadoVida();
+
+        transform.Rotate(0,0, 20 * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D other)
     {

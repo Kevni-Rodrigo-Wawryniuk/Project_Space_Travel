@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using Image = UnityEngine.UI.Image;
 
 public class StartMenu : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class StartMenu : MonoBehaviour
 
     [Header("Start Screem")]
     public bool startScreemAnimations;
-    [SerializeField] int objectStartScreemSeletion, objectNaveSelection, objectLevelsScreemSelection, objetoLevelButtonSelection, objectSettingScreemSeletion, objectSettingKeyControlScreemSeletion, objectQuitScreemSeletion;
+    [SerializeField] int objectStartScreemSeletion, objectNaveSelection, objetoLevelButtonSelection, objectSettingScreemSeletion, objectSettingKeyControlScreemSeletion, objectQuitScreemSeletion;
+    public int objectLevelsScreemSelection;
     [SerializeField] Transform[] positionNave;
     [SerializeField] GameObject[] buttonStartScreem, naveSelection, buttonLevelScreem, buttonSettingsScreem, buttonSettingKeyControl, buttonQuitScreem;
     public GameObject[] buttonStartScreemEventSystem, buttonSettingScreemEventSystem, buttonSettingKeyControlEventSystem, buttonQuitScreemEventSystem, buttonLevelScreemEventSystem;
@@ -32,6 +34,11 @@ public class StartMenu : MonoBehaviour
     [SerializeField] bool naveASeleccionar, moveMenus;
     [SerializeField] float speedPlanets, speerStarsY, speedNaves;
     [SerializeField] float timeSelectionNave, endTimeSelectionNave, timeQuitScreem;
+    [SerializeField] SpriteRenderer spriteSelector;
+    [SerializeField] TMP_Text textLevel, pointLevel1;
+    public int valueLevel1, valueLevel2;
+    public TMP_Text advertencia;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +46,9 @@ public class StartMenu : MonoBehaviour
         {
             startMenu = this;
         }
+
+        valueLevel1 = PlayerPrefs.GetInt("pointLevel1", 0);
+        valueLevel2 = PlayerPrefs.GetInt("pointLevel2", 0);
 
         keyControlAssing = GetComponent<KeyControlAssing>();
         eventSystem = GetComponent<EventSystem>();
@@ -50,6 +60,8 @@ public class StartMenu : MonoBehaviour
 
         startScreemAnimations = true;
         moveMenus = true;
+
+        advertencia.enabled = false;
 
         objectNaveSelection = PlayerPrefs.GetInt("Nave", 0);
 
@@ -209,9 +221,9 @@ public class StartMenu : MonoBehaviour
     public void SumarValorDeNivel()
     {
         objectLevelsScreemSelection++;
-        if (objectLevelsScreemSelection > 4)
+        if (objectLevelsScreemSelection > 1)
         {
-            objectLevelsScreemSelection = 4;
+            objectLevelsScreemSelection = 1;
         }
     }
     public void RestarValorDeNivel()
@@ -414,6 +426,7 @@ public class StartMenu : MonoBehaviour
         if (screemActive.canvasStartActive == true && naveASeleccionar == true)
         {
             naveSelection[6].SetActive(true);
+
             if (timeSelectionNave < endTimeSelectionNave)
             {
                 timeSelectionNave += 1 * Time.deltaTime;
@@ -428,6 +441,7 @@ public class StartMenu : MonoBehaviour
             }
 
             eventSystem.SetSelectedGameObject(buttonStartScreemEventSystem[3]);
+
             switch (objectNaveSelection)
             {
                 case 0:
@@ -486,45 +500,57 @@ public class StartMenu : MonoBehaviour
             switch (objectLevelsScreemSelection)
             {
                 case 0:
+                    textLevel.text = "Level 1";
+
                     backGroundPlanets[0].transform.position = new Vector3(0, 0, 0);
                     backGroundPlanets[1].transform.position = new Vector3(20, 0, 0);
                     backGroundPlanets[2].transform.position = new Vector3(40, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(60, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(80, 0, 0);
+
                     PlayerPrefs.SetInt("LevelSelection", 0);
+
+                    pointLevel1.text = "Points = " + valueLevel1;
                     break;
                 case 1:
+
+                    textLevel.text = "Level 2";
+
                     backGroundPlanets[0].transform.position = new Vector3(-20, 0, 0);
                     backGroundPlanets[1].transform.position = new Vector3(0, 0, 0);
                     backGroundPlanets[2].transform.position = new Vector3(20, 0, 0);
                     backGroundPlanets[3].transform.position = new Vector3(40, 0, 0);
                     backGroundPlanets[4].transform.position = new Vector3(60, 0, 0);
+
                     PlayerPrefs.SetInt("LevelSelection", 1);
+
+                    pointLevel1.text = "Points = " + valueLevel2;
                     break;
-                case 2:
-                    backGroundPlanets[0].transform.position = new Vector3(-40, 0, 0);
-                    backGroundPlanets[1].transform.position = new Vector3(-20, 0, 0);
-                    backGroundPlanets[2].transform.position = new Vector3(0, 0, 0);
-                    backGroundPlanets[3].transform.position = new Vector3(20, 0, 0);
-                    backGroundPlanets[4].transform.position = new Vector3(40, 0, 0);
-                    PlayerPrefs.SetInt("LevelSelection", 2);
-                    break;
-                case 3:
-                    backGroundPlanets[0].transform.position = new Vector3(-60, 0, 0);
-                    backGroundPlanets[1].transform.position = new Vector3(-40, 0, 0);
-                    backGroundPlanets[2].transform.position = new Vector3(-20, 0, 0);
-                    backGroundPlanets[3].transform.position = new Vector3(0, 0, 0);
-                    backGroundPlanets[4].transform.position = new Vector3(20, 0, 0);
-                    PlayerPrefs.SetInt("LevelSelection", 3);
-                    break;
-                case 4:
-                    backGroundPlanets[0].transform.position = new Vector3(-80, 0, 0);
-                    backGroundPlanets[1].transform.position = new Vector3(-60, 0, 0);
-                    backGroundPlanets[2].transform.position = new Vector3(-40, 0, 0);
-                    backGroundPlanets[3].transform.position = new Vector3(-20, 0, 0);
-                    backGroundPlanets[4].transform.position = new Vector3(0, 0, 0);
-                    PlayerPrefs.SetInt("LevelSelection", 4);
-                    break;
+                    /* case 2:
+                         backGroundPlanets[0].transform.position = new Vector3(-40, 0, 0);
+                         backGroundPlanets[1].transform.position = new Vector3(-20, 0, 0);
+                         backGroundPlanets[2].transform.position = new Vector3(0, 0, 0);
+                         backGroundPlanets[3].transform.position = new Vector3(20, 0, 0);
+                         backGroundPlanets[4].transform.position = new Vector3(40, 0, 0);
+                         PlayerPrefs.SetInt("LevelSelection", 2);
+                         break;
+                     case 3:
+                         backGroundPlanets[0].transform.position = new Vector3(-60, 0, 0);
+                         backGroundPlanets[1].transform.position = new Vector3(-40, 0, 0);
+                         backGroundPlanets[2].transform.position = new Vector3(-20, 0, 0);
+                         backGroundPlanets[3].transform.position = new Vector3(0, 0, 0);
+                         backGroundPlanets[4].transform.position = new Vector3(20, 0, 0);
+                         PlayerPrefs.SetInt("LevelSelection", 3);
+                         break;
+                     case 4:
+                         backGroundPlanets[0].transform.position = new Vector3(-80, 0, 0);
+                         backGroundPlanets[1].transform.position = new Vector3(-60, 0, 0);
+                         backGroundPlanets[2].transform.position = new Vector3(-40, 0, 0);
+                         backGroundPlanets[3].transform.position = new Vector3(-20, 0, 0);
+                         backGroundPlanets[4].transform.position = new Vector3(0, 0, 0);
+                         PlayerPrefs.SetInt("LevelSelection", 4);
+                         break;
+                         */
             }
             switch (objetoLevelButtonSelection)
             {
@@ -1031,6 +1057,8 @@ public class StartMenu : MonoBehaviour
             {
                 if (naveASeleccionar == false)
                 {
+                    spriteSelector.enabled = false;
+
                     if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
                         objectStartScreemSeletion--;
@@ -1081,6 +1109,10 @@ public class StartMenu : MonoBehaviour
                 }
                 else if (naveASeleccionar == true)
                 {
+
+                    spriteSelector.enabled = true;
+                    spriteSelector.color = Color.red;
+
                     if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
                         objectNaveSelection--;
@@ -1130,9 +1162,9 @@ public class StartMenu : MonoBehaviour
                 {
                     if (objectLevelsScreemSelection < 0)
                     {
-                        objectLevelsScreemSelection = 4;
+                        objectLevelsScreemSelection = 1;
                     }
-                    if (objectLevelsScreemSelection > 4)
+                    if (objectLevelsScreemSelection > 1)
                     {
                         objectLevelsScreemSelection = 0;
                     }

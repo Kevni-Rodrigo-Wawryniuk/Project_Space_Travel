@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5337349909312902868}
   - component: {fileID: 5337349909312902869}
   - component: {fileID: 5337349909312902856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletRed
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -215,5 +215,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781ed933cc5eae2479364d004b597af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeBullet: 0
-  bulletStatus: 0

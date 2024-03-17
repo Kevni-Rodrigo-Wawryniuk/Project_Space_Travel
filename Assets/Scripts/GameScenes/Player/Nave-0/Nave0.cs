@@ -8,7 +8,6 @@ using Quaternion = UnityEngine.Quaternion;
 using Unity.Mathematics;
 using System;
 using UnityEditor;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.UIElements;
@@ -26,6 +25,7 @@ public class Nave0 : MonoBehaviour
     [SerializeField] PowerUps powerUps;
     [SerializeField] ControlHabilityActive controlHabilityActive;
     [SerializeField] GameScene2 gameScene2;
+    [SerializeField] LevelsActive levelsActive;
 
     [Header("Escena Inicial")]
     public bool startScene;
@@ -36,6 +36,7 @@ public class Nave0 : MonoBehaviour
     public bool lifes;
     [SerializeField] Image[] lifeImage;
     [SerializeField] int lifePoint;
+    [SerializeField] GameObject explocion;
 
     [Header("Habilidades")]
     public bool hability;
@@ -67,6 +68,7 @@ public class Nave0 : MonoBehaviour
         keyControlAssingPlay = GameObject.Find("Scripts").GetComponent<KeyControlAssingPlay>();
         controlHabilityActive = GameObject.Find("Scripts").GetComponent<ControlHabilityActive>();
         gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
+        levelsActive = GameObject.Find("Levels").GetComponent<LevelsActive>();
 
         // activar la escena inicial
         startScene = true;
@@ -91,6 +93,9 @@ public class Nave0 : MonoBehaviour
         positionsShots[3] = GameObject.Find("PositionShotLazer2").transform;
         positionsShots[4] = GameObject.Find("PositionShotLazer3").transform;
         positionsShots[5] = GameObject.Find("PositionDefenses").transform;
+
+        // buscar las explociones en la carpeta resources
+        explocion = Resources.Load<GameObject>("Explocion");
     }
     void FixedUpdate()
     {
@@ -135,7 +140,7 @@ public class Nave0 : MonoBehaviour
                 controlHabilityActive.habilityValue = habilityActive;
             }
         }
-        
+
         if (other.CompareTag("LazerBoss"))
         {
             positionOfRebote = positionOfRebote = other.GetComponent<LazerControl>().transform.position;
@@ -150,6 +155,29 @@ public class Nave0 : MonoBehaviour
         {
             lifePoint -= Value;
         }
+
+        if (lifePoint <= 0)
+        {
+            rgb.velocity = new Vector2(0, 0);
+
+            ani.SetTrigger("Destroy");
+
+            hability = false;
+            movimiento = false;
+            disparos = false;
+
+            levelsActive.activarNave = false;
+        }
+    }
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+        Time.timeScale = 0;
+        gameScene2.canvasDead = true;
+    }
+    public void Explocion()
+    {
+        Instantiate(explocion, transform.position, Quaternion.identity);
     }
     private IEnumerator Rebote(Vector2 position)
     {
@@ -288,6 +316,13 @@ public class Nave0 : MonoBehaviour
                     }
                     break;
             }
+        }
+    }
+    public void RestartLife(int value)
+    {
+        if (lifePoint < 3)
+        {
+            lifePoint += value;
         }
     }
     //      DISPAROS        //

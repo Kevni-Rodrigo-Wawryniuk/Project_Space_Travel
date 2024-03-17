@@ -380,6 +380,7 @@ MonoBehaviour:
   powerUps: {fileID: 0}
   controlHabilityActive: {fileID: 0}
   gameScene2: {fileID: 0}
+  levelsActive: {fileID: 0}
   startScene: 0
   startSpeedY: 0
   StartSceneActive: 0
@@ -389,6 +390,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   lifePoint: 3
+  explocion: {fileID: 6795313297893335458, guid: ba99a1fea98b54e42bdbd15de8256c1c, type: 3}
   hability: 1
   habilityActive: 0
   ActiveDefense: 0
@@ -419,6 +421,8 @@ MonoBehaviour:
   speedY: 8
   positionNaveX: 0
   positionNaveY: 0
+  positionOfRebote: {x: 0, y: 0}
+  valor: 0
 --- !u!1 &7484962567111574202
 GameObject:
   m_ObjectHideFlags: 0

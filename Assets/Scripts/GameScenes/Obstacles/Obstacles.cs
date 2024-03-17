@@ -103,13 +103,31 @@ public class Obstacles : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             gameScene2.metheorosPoints++;
+
+            switch (gameScene2.levelValue)
+            {
+                case 0:
+                    if (gameScene2.metheorosPoints > gameScene2.levelValue1)
+                    {
+                        PlayerPrefs.SetInt("pointLevel1", gameScene2.metheorosPoints);
+                    }
+                    break;
+                case 1:
+                    if (gameScene2.metheorosPoints > gameScene2.levelValue2)
+                    {
+                        PlayerPrefs.SetInt("pointLevel2", gameScene2.metheorosPoints);
+                    }
+                    break;
+            }
+
+
             Destroy(this.gameObject);
-            Instantiate(explocion, transform.position, quaternion.identity);  
+            Instantiate(explocion, transform.position, quaternion.identity);
         }
-        if(other.CompareTag("Defense"))
+        if (other.CompareTag("Defense"))
         {
             Destroy(this.gameObject);
-            Instantiate(explocion, transform.position, quaternion.identity);      
+            Instantiate(explocion, transform.position, quaternion.identity);
         }
     }
 }

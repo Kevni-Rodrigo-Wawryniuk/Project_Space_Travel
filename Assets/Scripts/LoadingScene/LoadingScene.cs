@@ -29,6 +29,8 @@ public class LoadingScene : MonoBehaviour
         load = true;
         screemLoad = true;
 
+        endTimePaseScene = 1;
+
         sceneValue = PlayerPrefs.GetInt("Level", 0);
 
         if (load == true)
