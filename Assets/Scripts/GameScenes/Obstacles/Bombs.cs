@@ -21,7 +21,6 @@ public class Bombs : MonoBehaviour
     [SerializeField] GameObject hability;
     [SerializeField] GameObject explocion;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -47,22 +46,25 @@ public class Bombs : MonoBehaviour
         Limit();
         EstadoVida();
 
-        transform.Rotate(0,0, 20 * Time.deltaTime);
+        transform.Rotate(0, 0, 20 * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
+        {   
+            gameScene2.Explociones();
             nave0.DownLife(1);
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);
         }
         if (other.CompareTag("Bullet"))
-        {
+        {   
+            gameScene2.Explociones();
             animator.SetTrigger("danger");
         }
         if (other.CompareTag("Defense"))
         {
+            gameScene2.Explociones();
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);
         }

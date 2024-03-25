@@ -96,12 +96,15 @@ public class Obstacles : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameScene2.Explociones();
             nave0.DownLife(1);
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);
         }
         if (other.CompareTag("Bullet"))
         {
+            
+            gameScene2.Explociones();
             gameScene2.metheorosPoints++;
 
             switch (gameScene2.levelValue)
@@ -126,6 +129,8 @@ public class Obstacles : MonoBehaviour
         }
         if (other.CompareTag("Defense"))
         {
+            
+            gameScene2.Explociones();
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);
         }

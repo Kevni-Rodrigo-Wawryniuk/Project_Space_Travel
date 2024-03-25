@@ -64,6 +64,11 @@ public class GameScene2 : MonoBehaviour
 
     public int levelValue1, levelValue2;
 
+    [SerializeField] AudioSource sonidoExplocion;
+    [SerializeField] AudioSource disparoLazers;
+    [SerializeField] AudioSource disparoGranLazer;
+    [SerializeField] AudioSource sonidoEnter, sonidoSeleccion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -247,6 +252,7 @@ public class GameScene2 : MonoBehaviour
                             // invocar al jefe y falsear el booleno
                             if (bossActive == true)
                             {
+                                obstacles = false;
                                 // colocar al juego
                                 Instantiate(boss[0], positionBoss.position, quaternion.identity);
                                 bossActive = false;
@@ -274,6 +280,7 @@ public class GameScene2 : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                sonidoEnter.Play();
                 Pause();
             }
 
@@ -291,6 +298,7 @@ public class GameScene2 : MonoBehaviour
 
                             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                             {
+                                sonidoEnter.Play();
                                 Resume();
                             }
                             break;
@@ -301,16 +309,19 @@ public class GameScene2 : MonoBehaviour
                             eventSystem.SetSelectedGameObject(botones[1]);
                             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                             {
+                                sonidoEnter.Play();
                                 ReturnMenu();
                             }
                             break;
                     }
                     if (Input.GetKeyDown(keyControlAssingPlay.teclaW) || Input.GetKeyDown(keyControlAssingPlay.flechaArriba))
                     {
+                        sonidoSeleccion.Play();
                         moveMenu++;
                     }
                     if (Input.GetKeyDown(keyControlAssingPlay.teclaS) || Input.GetKeyDown(keyControlAssingPlay.flechaAbajo))
                     {
+                        sonidoSeleccion.Play();
                         moveMenu--;
                     }
                     if (moveMenu < 0)
@@ -335,6 +346,7 @@ public class GameScene2 : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
+                            sonidoEnter.Play();
                             Resume();
                         }
                         break;
@@ -346,16 +358,19 @@ public class GameScene2 : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
+                            sonidoEnter.Play();
                             ReturnMenu();
                         }
                         break;
                 }
                 if (Input.GetKeyDown(keyControlAssingPlay.teclaW) || Input.GetKeyDown(keyControlAssingPlay.flechaArriba))
                 {
+                    sonidoSeleccion.Play();
                     moveMenu++;
                 }
                 if (Input.GetKeyDown(keyControlAssingPlay.teclaS) || Input.GetKeyDown(keyControlAssingPlay.flechaAbajo))
                 {
+                    sonidoSeleccion.Play();
                     moveMenu--;
                 }
                 if (moveMenu > 3)
@@ -379,6 +394,7 @@ public class GameScene2 : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
+                            sonidoEnter.Play();
                             Resume();
                         }
                         break;
@@ -390,16 +406,19 @@ public class GameScene2 : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
+                            sonidoEnter.Play();
                             ReturnMenu();
                         }
                         break;
                 }
                 if (Input.GetKeyDown(keyControlAssingPlay.teclaW) || Input.GetKeyDown(keyControlAssingPlay.flechaArriba))
                 {
+                    sonidoSeleccion.Play();
                     moveMenu++;
                 }
                 if (Input.GetKeyDown(keyControlAssingPlay.teclaS) || Input.GetKeyDown(keyControlAssingPlay.flechaAbajo))
                 {
+                    sonidoSeleccion.Play();
                     moveMenu--;
                 }
                 if (moveMenu > 5)
@@ -418,6 +437,7 @@ public class GameScene2 : MonoBehaviour
     {
         if (canavasPlay == true && canvasDead == false && canvasWin == false)
         {
+            sonidoEnter.Play();
             if (canvasPause == true)
             {
                 Time.timeScale = 1;
@@ -433,6 +453,7 @@ public class GameScene2 : MonoBehaviour
     {
         if (canavasPlay == true && canvasDead == false && canvasWin == false)
         {
+            sonidoEnter.Play();
             if (canvasPause == true)
             {
                 Time.timeScale = 1;
@@ -490,7 +511,6 @@ public class GameScene2 : MonoBehaviour
         }
     }
 
-
     // Botones
     public void Restart()
     {
@@ -503,5 +523,26 @@ public class GameScene2 : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
         PlayerPrefs.SetInt("Level", 0);
+    }
+
+    // Explociones
+    public void Explociones()
+    {
+        sonidoExplocion.Play();
+    }
+    public void DispararLazer()
+    {
+        disparoLazers.Play();
+    }
+    public void DispararLazerBoss()
+    {
+        disparoGranLazer.Play();
+        disparoGranLazer.loop = true;
+    }
+
+    public void DispararLazerBossStop()
+    {
+        disparoGranLazer.Stop();
+        disparoGranLazer.loop = false;
     }
 }

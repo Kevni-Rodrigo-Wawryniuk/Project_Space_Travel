@@ -7,12 +7,13 @@ public class LazerDestroy : StateMachineBehaviour
     public static LazerDestroy lazerDestroy;
     [SerializeField] LazerControl lazerControl;
     [SerializeField] Transform positionL;
-
+    [SerializeField] GameScene2 gameScene2; 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         lazerControl = GameObject.Find("Lazer_0(Clone)").GetComponent<LazerControl>();
         positionL = GameObject.Find("Lazer_Point").transform;
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
 
         if (lazerDestroy == null)
         {

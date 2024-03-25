@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletBoss : MonoBehaviour
 {
     public static BulletBoss bulletBoss;
+    [SerializeField] GameScene2 gameScene2;
 
     [SerializeField] Nave0 nave0;
  
@@ -12,6 +13,8 @@ public class BulletBoss : MonoBehaviour
     void Start()
     {
         nave0 = GameObject.FindGameObjectWithTag("Player").GetComponent<Nave0>();
+
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
     }
  
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class BulletBoss : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            gameScene2.Explociones();
             nave0.DownLife(1);
             Destroy(this.gameObject);
         }

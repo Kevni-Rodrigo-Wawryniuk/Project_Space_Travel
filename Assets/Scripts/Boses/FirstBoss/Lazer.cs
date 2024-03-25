@@ -15,14 +15,17 @@ public class Lazer : StateMachineBehaviour
     [SerializeField] Transform positionL;
     [SerializeField] float randomNumber, speedX;
     [SerializeField] Rigidbody2D rgb;
+    [SerializeField] GameScene2 gameScene2;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
         rgb = animator.GetComponent<Rigidbody2D>();
         positionL = GameObject.Find("Lazer_Point").transform;
         Instantiate(lazerinstante, positionL.position, quaternion.identity);
-
+        gameScene2.DispararLazer();
+        
         speedX = 5;
 
         randomNumber = Random.Range(0f, 1f);

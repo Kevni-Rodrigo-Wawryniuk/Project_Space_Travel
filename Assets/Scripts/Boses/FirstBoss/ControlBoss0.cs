@@ -25,7 +25,7 @@ public class ControlBoss0 : MonoBehaviour
     [Header("Pantalla de vida")]
     public bool pantallaActiva;
     [SerializeField] Slider sliderVida;
-
+    [SerializeField] AudioSource sonido;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +78,7 @@ public class ControlBoss0 : MonoBehaviour
             if (liveValue > 0)
             {
                 liveValue--;
+                gameScene2.Explociones();
             }
         }
     }
@@ -114,6 +115,7 @@ public class ControlBoss0 : MonoBehaviour
     public void Explociones()
     {
         Instantiate(explocion, transform.position, quaternion.identity);
+        gameScene2.Explociones();
     }
     public void Destroyer()
     {
@@ -121,5 +123,14 @@ public class ControlBoss0 : MonoBehaviour
         gameScene2.canvasWin = true;
         Time.timeScale = 0;
         live = false;
+    }
+
+    public void SonidoLazerPLay()
+    {
+        sonido.Play();
+    }
+    public void SonidoLazerStop()
+    {
+        sonido.Stop();
     }
 }

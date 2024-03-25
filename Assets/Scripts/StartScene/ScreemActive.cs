@@ -70,24 +70,29 @@ public class ScreemActive : MonoBehaviour
     {
         canvasStartActive = !canvasStartActive;
         canvasLevelsActive = !canvasLevelsActive;
+        startMenu.SonidoEnter();
     }
     public void BotonSettings()
     {
         canvasStartActive = !canvasStartActive;
         canvasSettingsActive = !canvasSettingsActive;
+        startMenu.SonidoEnter();
     }
     public void BotonSettingsKeyControl()
     {
         canvasSettingsActive = !canvasSettingsActive;
         canvasSettingsKeyControlActive = !canvasSettingsKeyControlActive;
+        startMenu.SonidoEnter();
     }
     public void BotonQuit()
     {
         canvasStartActive = !canvasStartActive;
         canvasQuitActive = !canvasQuitActive;
+        startMenu.SonidoEnter();
     }
     public void BotonQuitYes()
     {
+        startMenu.SonidoEnter();
         Application.Quit();
         Debug.Log("Saliste Del Juego");
     }
@@ -100,16 +105,19 @@ public class ScreemActive : MonoBehaviour
         {
             if (startMenu.valueLevel1 >= 400)
             {
+                startMenu.SonidoEnter();
                 SceneManager.LoadScene(1);
             }
             else
             {
+                startMenu.SonidoEnter();
                 mostrarText = true;
                 startMenu.advertencia.text = "you need to get 400 points";
             }
         }
         if (valorLevel == 0)
         {
+            startMenu.SonidoEnter();
             SceneManager.LoadScene(1);
         }
 

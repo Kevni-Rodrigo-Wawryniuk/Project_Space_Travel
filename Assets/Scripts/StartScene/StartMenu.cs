@@ -38,6 +38,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] TMP_Text textLevel, pointLevel1;
     public int valueLevel1, valueLevel2;
     public TMP_Text advertencia;
+    public AudioSource selectionAudio, enterAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -181,6 +182,12 @@ public class StartMenu : MonoBehaviour
         MoveStars();
     }
 
+    // sonido de menu //
+    public void SonidoEnter()
+    {
+        enterAudio.Play();
+    }
+
     //      CARGAR SCENA    //
     public void PassScene()
     {
@@ -191,12 +198,14 @@ public class StartMenu : MonoBehaviour
     //      NAVE A USAR     //
     public void SeleccionarNave()
     {
+        SonidoEnter();
         naveASeleccionar = !naveASeleccionar;
     }
     public void SumarValorDeLaNave()
     {
         naveASeleccionar = true;
         objectNaveSelection++;
+        selectionAudio.Play();
         if (objectNaveSelection > 5)
         {
             objectNaveSelection = 5;
@@ -208,6 +217,7 @@ public class StartMenu : MonoBehaviour
     {
         naveASeleccionar = true;
         objectNaveSelection--;
+        selectionAudio.Play();
         if (objectNaveSelection < 0)
         {
             objectNaveSelection = 0;
@@ -221,6 +231,7 @@ public class StartMenu : MonoBehaviour
     public void SumarValorDeNivel()
     {
         objectLevelsScreemSelection++;
+        selectionAudio.Play();
         if (objectLevelsScreemSelection > 1)
         {
             objectLevelsScreemSelection = 1;
@@ -229,6 +240,7 @@ public class StartMenu : MonoBehaviour
     public void RestarValorDeNivel()
     {
         objectLevelsScreemSelection--;
+        selectionAudio.Play();
         if (objectLevelsScreemSelection < 0)
         {
             objectLevelsScreemSelection = 0;
@@ -270,6 +282,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
                         screemActive.BotonLevels();
+                        enterAudio.Play();
                     }
                     break;
                 case 1:
@@ -298,6 +311,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
                         screemActive.BotonSettings();
+                        enterAudio.Play();
                     }
                     break;
                 case 2:
@@ -332,6 +346,7 @@ public class StartMenu : MonoBehaviour
                         {
                             timeQuitScreem = 0;
                             screemActive.BotonQuit();
+                            enterAudio.Play();
                         }
                     }
                     break;
@@ -366,6 +381,7 @@ public class StartMenu : MonoBehaviour
                         {
                             SeleccionarNave();
                             timeSelectionNave = 0;
+                            enterAudio.Play();
                         }
                     }
 
@@ -437,6 +453,7 @@ public class StartMenu : MonoBehaviour
                 {
                     SeleccionarNave();
                     timeSelectionNave = 0;
+                    enterAudio.Play();
                 }
             }
 
@@ -707,10 +724,12 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
                         controlResolution_1.tMP_Dropdown.value++;
+                        selectionAudio.Play();
                     }
                     if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
                         controlResolution_1.tMP_Dropdown.value--;
+                        selectionAudio.Play();
                     }
                     break;
                 case 4:
@@ -740,11 +759,13 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
                         controlQuality.tMP_DropdownQuality.value++;
+                        selectionAudio.Play();
                     }
 
                     if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
                         controlQuality.tMP_DropdownQuality.value--;
+                        selectionAudio.Play();
                     }
                     break;
                 case 5:
@@ -1007,6 +1028,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
                         screemActive.BotonQuitYes();
+                        enterAudio.Play();
                     }
                     break;
                 case 1:
@@ -1040,6 +1062,7 @@ public class StartMenu : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
                             timeQuitScreem = 0;
+                            enterAudio.Play();
                             screemActive.BotonQuit();
                         }
                     }
@@ -1062,6 +1085,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
                         objectStartScreemSeletion--;
+                        selectionAudio.Play();
                         if (objectStartScreemSeletion < 0)
                         {
                             objectStartScreemSeletion = 2;
@@ -1074,6 +1098,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
                     {
                         objectStartScreemSeletion++;
+                        selectionAudio.Play();
                         if (objectStartScreemSeletion < 0)
                         {
                             objectStartScreemSeletion = 2;
@@ -1086,6 +1111,7 @@ public class StartMenu : MonoBehaviour
                     }
                     if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
+                        selectionAudio.Play();
                         if (objectStartScreemSeletion == 3)
                         {
                             objectStartScreemSeletion = 0;
@@ -1097,6 +1123,7 @@ public class StartMenu : MonoBehaviour
                     }
                     if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
+                        selectionAudio.Play();
                         if (objectStartScreemSeletion < 3)
                         {
                             objectStartScreemSeletion = 3;
@@ -1116,6 +1143,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
                         objectNaveSelection--;
+                        selectionAudio.Play();
                         if (objectNaveSelection < 0)
                         {
                             objectNaveSelection = 0;
@@ -1126,6 +1154,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
                     {
                         objectNaveSelection++;
+                        selectionAudio.Play();
                         if (objectNaveSelection > 5)
                         {
                             objectNaveSelection = 5;
@@ -1136,6 +1165,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
                         objectNaveSelection++;
+                        selectionAudio.Play();
                         if (objectNaveSelection > 5)
                         {
                             objectNaveSelection = 5;
@@ -1146,6 +1176,7 @@ public class StartMenu : MonoBehaviour
                     if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
                         objectNaveSelection--;
+                        selectionAudio.Play();
                         if (objectNaveSelection < 0)
                         {
                             objectNaveSelection = 0;
@@ -1170,10 +1201,12 @@ public class StartMenu : MonoBehaviour
                     }
                     if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.RightArrow))
                     {
+                        selectionAudio.Play();
                         objectLevelsScreemSelection++;
                     }
                     if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
+                        selectionAudio.Play();
                         objectLevelsScreemSelection--;
                     }
                 }
@@ -1188,10 +1221,12 @@ public class StartMenu : MonoBehaviour
                 }
                 if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
+                    selectionAudio.Play();
                     objetoLevelButtonSelection++;
                 }
                 if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
+                    selectionAudio.Play();
                     objetoLevelButtonSelection--;
                 }
 
@@ -1210,10 +1245,12 @@ public class StartMenu : MonoBehaviour
                 if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     objectSettingScreemSeletion--;
+                    selectionAudio.Play();
                 }
                 if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     objectSettingScreemSeletion++;
+                    selectionAudio.Play();
                 }
             }
             if (screemActive.canvasSettingsKeyControlActive == true)
@@ -1229,10 +1266,12 @@ public class StartMenu : MonoBehaviour
                 if (Input.GetKeyDown(keyControlAssing.teclaW) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     objectSettingKeyControlScreemSeletion--;
+                    selectionAudio.Play();
                 }
                 if (Input.GetKeyDown(keyControlAssing.teclaS) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     objectSettingKeyControlScreemSeletion++;
+                    selectionAudio.Play();
                 }
             }
             if (screemActive.canvasQuitActive == true)
@@ -1249,10 +1288,12 @@ public class StartMenu : MonoBehaviour
                 if (Input.GetKeyDown(keyControlAssing.teclaD) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     objectQuitScreemSeletion++;
+                    selectionAudio.Play();
                 }
                 if (Input.GetKeyDown(keyControlAssing.teclaA) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     objectQuitScreemSeletion--;
+                    selectionAudio.Play();
                 }
             }
         }

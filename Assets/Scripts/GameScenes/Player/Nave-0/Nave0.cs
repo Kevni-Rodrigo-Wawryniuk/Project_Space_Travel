@@ -13,6 +13,8 @@ using TMPro;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 using UnityEngine.Rendering;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class Nave0 : MonoBehaviour
 {
@@ -42,6 +44,7 @@ public class Nave0 : MonoBehaviour
     public bool hability;
     public int habilityActive;
     [SerializeField] bool ActiveDefense;
+    [SerializeField] bool activeHability;
 
     [Header("Disparos")]
     public bool disparos;
@@ -55,6 +58,10 @@ public class Nave0 : MonoBehaviour
     [SerializeField] float speedX, speedY, positionNaveX, positionNaveY;
     [SerializeField] Vector2 positionOfRebote;
     [SerializeField] int valor;
+
+    [Header("Sonidos")]
+    [SerializeField] AudioSource[] sonidoNave;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +103,8 @@ public class Nave0 : MonoBehaviour
 
         // buscar las explociones en la carpeta resources
         explocion = Resources.Load<GameObject>("Explocion");
+
+        activeHability = false;
     }
     void FixedUpdate()
     {
@@ -125,6 +134,8 @@ public class Nave0 : MonoBehaviour
         if (other.CompareTag("PowerUp"))
         {
             powerUps = other.GetComponent<PowerUps>();
+
+            activeHability = true;
 
             if (controlHabilityActive.activeHability == false)
             {
@@ -178,6 +189,7 @@ public class Nave0 : MonoBehaviour
     public void Explocion()
     {
         Instantiate(explocion, transform.position, Quaternion.identity);
+        sonidoNave[3].Play();
     }
     private IEnumerator Rebote(Vector2 position)
     {
@@ -598,27 +610,28 @@ public class Nave0 : MonoBehaviour
     {
         GameObject bulets = Instantiate(lazers[0], positionsShots[0].position, quaternion.identity);
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+        sonidoNave[0].Play();
     }
     private void DisparoAzul()
     {
         GameObject bulets = Instantiate(lazers[2], positionsShots[0].position, quaternion.identity);
-
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+        sonidoNave[0].Play();
     }
     private void DisparoRojo()
     {
         GameObject bulets = Instantiate(lazers[1], positionsShots[0].position, quaternion.identity);
-
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
-
+        sonidoNave[0].Play();
     }
 
     //       HABILIDADES        //
     private void LazerRedBurst()
     {
         GameObject bulet = Instantiate(lazers[3], positionsShots[0].position, quaternion.identity);
-
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        sonidoNave[1].Play();
     }
     private void LazerCelestialBurst()
     {
@@ -627,6 +640,8 @@ public class Nave0 : MonoBehaviour
 
         GameObject bulets = Instantiate(lazers[4], positionsShots[2].position, quaternion.identity);
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+
+        sonidoNave[1].Play();
     }
     private void LazerBlueBurst()
     {
@@ -637,6 +652,8 @@ public class Nave0 : MonoBehaviour
         GameObject bulets = Instantiate(lazers[5], positionsShots[4].position, quaternion.identity);
         bulets.GetComponent<Transform>().localEulerAngles = new Vector3(0, 0, -30);
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(forceShotx, forceShoty), ForceMode2D.Impulse);
+
+        sonidoNave[1].Play();
     }
     private IEnumerator DefenseGreen()
     {
@@ -669,24 +686,24 @@ public class Nave0 : MonoBehaviour
     {
         GameObject bulet = Instantiate(lazers[9], positionsShots[0].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(2, 2, 1);
-
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
+        sonidoNave[1].Play();
     }
     private void EsferaAzul()
     {
+        sonidoNave[1].Play();
+        sonidoNave[0].Play();
+
         GameObject bulet = Instantiate(lazers[10], positionsShots[3].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulets = Instantiate(lazers[10], positionsShots[4].position, quaternion.identity);
         bulets.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-
         bulets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet0 = Instantiate(lazers[10], positionsShots[1].position, quaternion.identity);
         bulet0.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
-
         bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet1 = Instantiate(lazers[10], positionsShots[2].position, quaternion.identity);
@@ -695,36 +712,32 @@ public class Nave0 : MonoBehaviour
     }
     private void EsferaRoja()
     {
+        sonidoNave[1].Play();
+        sonidoNave[0].Play();
+
         GameObject bulet = Instantiate(lazers[11], positionsShots[0].position, quaternion.identity);
         bulet.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet0 = Instantiate(lazers[11], positionsShots[1].position, quaternion.identity);
         bulet0.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet1 = Instantiate(lazers[11], positionsShots[2].position, quaternion.identity);
         bulet1.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet2 = Instantiate(lazers[11], positionsShots[3].position, quaternion.identity);
         bulet2.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet2.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet3 = Instantiate(lazers[11], positionsShots[4].position, quaternion.identity);
         bulet3.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet3.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
 
         GameObject bulet4 = Instantiate(lazers[11], positionsShots[5].position, quaternion.identity);
         bulet4.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
-
         bulet4.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, forceShoty), ForceMode2D.Impulse);
-
     }
     // ACTIVAR LAS HABILIDADES  //
     private void UseHability()
@@ -733,9 +746,15 @@ public class Nave0 : MonoBehaviour
         {
             if (Input.GetKeyDown(keyControlAssingPlay.teclaHability))
             {
+                if (activeHability == true)
+                {
+                    sonidoNave[2].Play();
+                    activeHability = false;
+                }
                 if (controlHabilityActive.useHability == false)
                 {
                     controlHabilityActive.useHability = true;
+
                     switch (habilityActive)
                     {
                         case 0:

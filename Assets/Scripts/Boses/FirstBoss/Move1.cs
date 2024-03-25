@@ -12,12 +12,14 @@ public class Move1 : StateMachineBehaviour
     [SerializeField] Transform positionD, positionI, positionC;
     [SerializeField] GameObject bullet;
     [SerializeField] float randomNumber, speedX, timeMove, endTimeMove, forceShot;
+    [SerializeField] GameScene2 gameScene2;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rgb = animator.GetComponent<Rigidbody2D>();
-
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
+       
         positionD = GameObject.Find("Shot_Point_D").transform;
         positionI = GameObject.Find("Shot_Point_I").transform;
         positionC = GameObject.Find("Lazer_Point").transform;
@@ -66,6 +68,7 @@ public class Move1 : StateMachineBehaviour
             timeShot = 0;
             GameObject bullets = Instantiate(bullet, positionD.position, quaternion.identity);
             bullets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -forceShot), ForceMode2D.Impulse);
+            gameScene2.DispararLazer();
         }
 
         if (timeShot1 < endTimeShot1)
@@ -77,6 +80,7 @@ public class Move1 : StateMachineBehaviour
             timeShot1 = 0;
             GameObject bullets = Instantiate(bullet, positionI.position, quaternion.identity);
             bullets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -forceShot), ForceMode2D.Impulse);
+            gameScene2.DispararLazer();
         }
 
         if (timeShot2 < endTimeShot2)
@@ -88,6 +92,7 @@ public class Move1 : StateMachineBehaviour
             timeShot2 = 0;
             GameObject bullets = Instantiate(bullet, positionC.position, quaternion.identity);
             bullets.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -forceShot), ForceMode2D.Impulse);
+            gameScene2.DispararLazer();
         }
     }
 
