@@ -48,7 +48,6 @@ public class KeyControlAssingPlay : MonoBehaviour
                 teclaShot = (KeyCode)PlayerPrefs.GetInt("teclaShot");
                 teclaHability = (KeyCode)PlayerPrefs.GetInt("teclaHabilidad");
             }
-
         }
     }
 }

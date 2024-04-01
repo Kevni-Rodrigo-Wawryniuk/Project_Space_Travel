@@ -69,10 +69,25 @@ public class GameScene2 : MonoBehaviour
     [SerializeField] AudioSource disparoGranLazer;
     [SerializeField] AudioSource sonidoEnter, sonidoSeleccion;
 
+    [Header("Opciones")]
+    [SerializeField] float brillo;
+    [SerializeField] Image imageBrillo;
+
+    [Header("Musica de Fondo")]
+    public int win;
+    public AudioSource audioFondoGame, audioLose, audioWin;
+    public int playAudioFondo, playAudioWin;
+
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+
+        imageBrillo = GameObject.Find("Image_Shine").GetComponent<Image>();
+
+        brillo = PlayerPrefs.GetFloat("shinevalue", 0);
+
+        imageBrillo.color = new Color(255, 255, 255, brillo);
 
         if (gameScene2 == null)
         {
@@ -132,7 +147,7 @@ public class GameScene2 : MonoBehaviour
 
                     endTimeMeteoro = 0.3f;
                     endTimeBombs = 5;
-                    endTimeGame = 5;
+                    endTimeGame = 3;
                     break;
                 case 1:
 
@@ -142,7 +157,7 @@ public class GameScene2 : MonoBehaviour
 
                     endTimeMeteoro = 0.5f;
                     endTimeBombs = 5;
-                    endTimeGame = 3;
+                    endTimeGame = 2;
                     break;
                 case 2:
                     obstacles = true;
@@ -174,6 +189,11 @@ public class GameScene2 : MonoBehaviour
         canvasControl = true;
         bossActive = true;
         bossCombat = false;
+
+        audioFondoGame.loop = true;
+        audioFondoGame.Stop();
+        playAudioFondo = 3;
+        win = 0;
     }
 
     // Update is called once per frame
@@ -194,6 +214,34 @@ public class GameScene2 : MonoBehaviour
         {
             if (nave0.StartSceneActive == false)
             {
+
+                if (playAudioFondo == 0)
+                {
+                    audioFondoGame.Play();
+                    playAudioFondo = 1;
+                }
+                if (playAudioFondo == 2)
+                {
+                    audioFondoGame.Stop();
+                }
+                // ganar
+                if (playAudioWin == 1)
+                {
+                    audioWin.Play();
+                    playAudioWin = 0;
+                }
+                if(win == 1){
+                    playAudioWin = 1;
+                    win = 2;
+                }
+                // perder
+                if (playAudioWin == 2)
+                {
+                    audioLose.Play();
+                    playAudioWin = 0;
+                }
+
+
                 textMetheors.text = metheorosPoints.ToString();
 
                 if (timeMinut > 10 && timeSecond < 10)
@@ -241,8 +289,12 @@ public class GameScene2 : MonoBehaviour
                     case 0:
                         if (timeMinut >= endTimeGame)
                         {
+                            if(win == 0){
+                                win = 1;
+                            }
                             canvasWin = true;
                             Time.timeScale = 0;
+                            playAudioFondo = 2;
                         }
                         break;
                     case 1:
@@ -347,7 +399,7 @@ public class GameScene2 : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                         {
                             sonidoEnter.Play();
-                            Resume();
+                            Restart();
                         }
                         break;
                     case 3:
@@ -514,6 +566,7 @@ public class GameScene2 : MonoBehaviour
     // Botones
     public void Restart()
     {
+        audioFondoGame.Stop();
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
         Time.timeScale = 1;

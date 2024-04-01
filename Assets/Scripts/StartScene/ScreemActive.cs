@@ -103,7 +103,7 @@ public class ScreemActive : MonoBehaviour
     {
         if (valorLevel == 1)
         {
-            if (startMenu.valueLevel1 >= 400)
+            if (startMenu.valueLevel1 >= 200)
             {
                 startMenu.SonidoEnter();
                 SceneManager.LoadScene(1);
@@ -112,7 +112,7 @@ public class ScreemActive : MonoBehaviour
             {
                 startMenu.SonidoEnter();
                 mostrarText = true;
-                startMenu.advertencia.text = "you need to get 400 points";
+                startMenu.advertencia.text = "you need to get 200 points";
             }
         }
         if (valorLevel == 0)

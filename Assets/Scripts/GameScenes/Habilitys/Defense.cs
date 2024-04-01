@@ -5,6 +5,7 @@ using UnityEngine;
 public class Defense : MonoBehaviour
 {
     public static Defense defense;
+    public GameScene2 gameScene2;
 
     [Header("Activar defensas")]
     public bool defenseActive;
@@ -23,6 +24,7 @@ public class Defense : MonoBehaviour
         defenseActive = true;
 
         nave0 = GameObject.FindGameObjectWithTag("Player").GetComponent<Nave0>();
+        gameScene2 = GameObject.Find("Scripts").GetComponent<GameScene2>();
 
         positionDefense = nave0.positionsShots[5];
 
@@ -37,6 +39,7 @@ public class Defense : MonoBehaviour
 
     private void Defenses()
     {
+
         if (defenseActive == true)
         {
             switch (useDefense)
@@ -63,6 +66,10 @@ public class Defense : MonoBehaviour
                     endTimeActive = 10;
                     if (timeActive < endTimeActive)
                     {
+                        if (gameScene2.canvasDead == true)
+                        {
+                            Destroy(this.gameObject);
+                        }
                         timeActive += 1 * Time.deltaTime;
 
                         transform.position = Vector3.Lerp(transform.position, positionDefense.position, speedFollow * Time.deltaTime);
@@ -73,11 +80,15 @@ public class Defense : MonoBehaviour
                         timeActive = 0;
                     }
                     break;
-                    // defensa azul
-                    case 3:
+                // defensa azul
+                case 3:
                     endTimeActive = 10;
                     if (timeActive < endTimeActive)
                     {
+                        if (gameScene2.canvasDead == true)
+                        {
+                            Destroy(this.gameObject);
+                        }
                         timeActive += 1 * Time.deltaTime;
 
                         transform.position = Vector3.Lerp(transform.position, positionDefense.position, speedFollow * Time.deltaTime);

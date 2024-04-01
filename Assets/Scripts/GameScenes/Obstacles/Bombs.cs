@@ -62,7 +62,7 @@ public class Bombs : MonoBehaviour
             gameScene2.Explociones();
             animator.SetTrigger("danger");
         }
-        if (other.CompareTag("Defense"))
+        if (other.CompareTag("Defense") || other.CompareTag("DefenseAttack"))
         {
             gameScene2.Explociones();
             Destroy(this.gameObject);

@@ -101,7 +101,7 @@ public class Obstacles : MonoBehaviour
             Destroy(this.gameObject);
             Instantiate(explocion, transform.position, quaternion.identity);
         }
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("DefenseAttack"))
         {
             
             gameScene2.Explociones();

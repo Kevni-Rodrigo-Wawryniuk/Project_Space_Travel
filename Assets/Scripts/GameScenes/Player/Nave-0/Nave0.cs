@@ -80,7 +80,7 @@ public class Nave0 : MonoBehaviour
         // activar la escena inicial
         startScene = true;
         StartSceneActive = true;
-        startSpeedY = 0.02f;
+        startSpeedY = 0.1f;
         // valores de las habilidades
         lifePoint = 3;
         forceShotx = 20;
@@ -185,6 +185,8 @@ public class Nave0 : MonoBehaviour
         Destroy(this.gameObject);
         Time.timeScale = 0;
         gameScene2.canvasDead = true;
+        gameScene2.playAudioFondo = 2;
+        gameScene2.playAudioWin = 2;
     }
     public void Explocion()
     {
@@ -247,6 +249,7 @@ public class Nave0 : MonoBehaviour
                 }
                 if (transform.position.y >= 0)
                 {
+                    gameScene2.playAudioFondo = 0;
                     movimiento = true;
                     disparos = true;
                     hability = true;

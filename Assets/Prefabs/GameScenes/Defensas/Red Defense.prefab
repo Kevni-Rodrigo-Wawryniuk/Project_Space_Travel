@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6917351314543794964}
   m_Layer: 0
   m_Name: Red Defense
-  m_TagString: Defense
+  m_TagString: DefenseAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

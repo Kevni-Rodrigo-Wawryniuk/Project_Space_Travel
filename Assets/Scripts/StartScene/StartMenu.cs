@@ -38,7 +38,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] TMP_Text textLevel, pointLevel1;
     public int valueLevel1, valueLevel2;
     public TMP_Text advertencia;
-    public AudioSource selectionAudio, enterAudio;
+    public AudioSource selectionAudio, enterAudio, audioFondo;
 
     // Start is called before the first frame update
     void Start()
@@ -117,6 +117,9 @@ public class StartMenu : MonoBehaviour
                 naveSelection[5].transform.position = positionNave[1].position;
                 break;
         }
+   
+        audioFondo.loop = true;
+        audioFondo.Play();
     }
     private void PreAsignacionDeTeclas()
     {

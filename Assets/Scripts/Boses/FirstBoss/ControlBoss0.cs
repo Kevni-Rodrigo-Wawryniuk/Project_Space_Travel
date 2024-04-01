@@ -121,8 +121,10 @@ public class ControlBoss0 : MonoBehaviour
     {
         Destroy(this.gameObject);
         gameScene2.canvasWin = true;
+        gameScene2.playAudioFondo = 2;
         Time.timeScale = 0;
         live = false;
+        gameScene2.playAudioWin = 2;
     }
 
     public void SonidoLazerPLay()
